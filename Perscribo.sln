@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Perscribo.EF.Library", "Perscribo.EF.Library\Perscribo.EF.Library.csproj", "{0239FC99-7E15-4246-906E-707ABE27F191}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Perscribo.EF.TestHarness", "Perscribo.EF.TestHarness\Perscribo.EF.TestHarness.csproj", "{15BFD283-92C7-4B34-9594-4147209C6B64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerscriboMVC", "PerscriboMVC\PerscriboMVC.csproj", "{7CA5942B-731A-486D-9F3C-63604733D4FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		DeployWWW|Any CPU = DeployWWW|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0239FC99-7E15-4246-906E-707ABE27F191}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0239FC99-7E15-4246-906E-707ABE27F191}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0239FC99-7E15-4246-906E-707ABE27F191}.DeployWWW|Any CPU.ActiveCfg = DeployWWW|Any CPU
+		{0239FC99-7E15-4246-906E-707ABE27F191}.DeployWWW|Any CPU.Build.0 = DeployWWW|Any CPU
+		{0239FC99-7E15-4246-906E-707ABE27F191}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0239FC99-7E15-4246-906E-707ABE27F191}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15BFD283-92C7-4B34-9594-4147209C6B64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15BFD283-92C7-4B34-9594-4147209C6B64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15BFD283-92C7-4B34-9594-4147209C6B64}.DeployWWW|Any CPU.ActiveCfg = DeployWWW|Any CPU
+		{15BFD283-92C7-4B34-9594-4147209C6B64}.DeployWWW|Any CPU.Build.0 = DeployWWW|Any CPU
+		{15BFD283-92C7-4B34-9594-4147209C6B64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15BFD283-92C7-4B34-9594-4147209C6B64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CA5942B-731A-486D-9F3C-63604733D4FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CA5942B-731A-486D-9F3C-63604733D4FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CA5942B-731A-486D-9F3C-63604733D4FF}.DeployWWW|Any CPU.ActiveCfg = DeployWWW|Any CPU
+		{7CA5942B-731A-486D-9F3C-63604733D4FF}.DeployWWW|Any CPU.Build.0 = DeployWWW|Any CPU
+		{7CA5942B-731A-486D-9F3C-63604733D4FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CA5942B-731A-486D-9F3C-63604733D4FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,78 @@
+﻿@model Perscribo.EF.Library.Models.Role
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Role</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PositionTitle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PositionTitle)
+            @Html.ValidationMessageFor(model => model.PositionTitle)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AppliedForOn)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AppliedForOn)
+            @Html.ValidationMessageFor(model => model.AppliedForOn)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ReferenceNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ReferenceNumber)
+            @Html.ValidationMessageFor(model => model.ReferenceNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LowSalaryRange)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LowSalaryRange)
+            @Html.ValidationMessageFor(model => model.LowSalaryRange)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HighSalaryRange)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HighSalaryRange)
+            @Html.ValidationMessageFor(model => model.HighSalaryRange)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AgentInterview)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AgentInterview)
+            @Html.ValidationMessageFor(model => model.AgentInterview)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
