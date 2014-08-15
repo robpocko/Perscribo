@@ -1,12 +1,15 @@
 ﻿@model Perscribo.EF.Library.Models.Role
+@using Perscribo.EF.Library.Models;
+@using System.Collections.Generic;
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create a new Application";
 }
 
-<h2>Create</h2>
+<h2>Create a new Application</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -19,7 +22,7 @@
             @Html.LabelFor(model => model.PositionTitle)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.PositionTitle)
+            @Html.EditorFor(model => model.PositionTitle, null, new { style = "width: 400px;" })
             @Html.ValidationMessageFor(model => model.PositionTitle)
         </div>
 
@@ -27,6 +30,7 @@
             @Html.LabelFor(model => model.AppliedForOn)
         </div>
         <div class="editor-field">
+            
             @Html.EditorFor(model => model.AppliedForOn)
             @Html.ValidationMessageFor(model => model.AppliedForOn)
         </div>
@@ -39,6 +43,14 @@
             @Html.ValidationMessageFor(model => model.ReferenceNumber)
         </div>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PositionType)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PositionType", string.Empty)
+            @Html.ValidationMessageFor(model => model.PositionType)
+        </div>
+        
         <div class="editor-label">
             @Html.LabelFor(model => model.LowSalaryRange)
         </div>
@@ -56,11 +68,37 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.SalaryType)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("SalaryType", string.Empty)
+            @Html.ValidationMessageFor(model => model.SalaryType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Status)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Status", string.Empty)
+            @Html.ValidationMessageFor(model => model.Status)
+        </div>
+
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.AgentInterview)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.AgentInterview)
             @Html.ValidationMessageFor(model => model.AgentInterview)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Agency)
+        </div>
+        <div class="editor-field">
+            @{Html.RenderAction("Agency", "Applications");}
+@*            @Html.EditorFor(model => model.Agency)
+            @Html.ValidationMessageFor(model => model.Agency)*@
         </div>
 
         <p>

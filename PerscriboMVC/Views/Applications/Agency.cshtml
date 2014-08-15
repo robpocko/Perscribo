@@ -1,0 +1,13 @@
+﻿@model List<Perscribo.EF.Library.Models.Agency>
+@using Perscribo.EF.Library.DAL;
+@using Perscribo.EF.Library.Models;
+
+@{
+    var agencies = from a in Model
+                   orderby a.Name
+                   select new { AgencyID = a.ID, Name = a.Name };
+
+    var selectList = new SelectList(agencies, "AgencyID", "Name");
+}
+
+@Html.DropDownList("AgencyID", selectList)

@@ -10,7 +10,7 @@ namespace PerscriboMVC.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "'Perscribo' is the latin for Place of Records";
+            ViewBag.Message = "'Perscribo' is the latin for 'Place of Records'";
 
             return View();
         }
