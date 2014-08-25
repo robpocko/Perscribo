@@ -134,6 +134,8 @@
     <Compile Include="Areas\Applications\Controllers\PartialViewsController.cs" />
     <Compile Include="Areas\Engagements\Controllers\EngagementController.cs" />
     <Compile Include="Areas\Engagements\EngagementsAreaRegistration.cs" />
+    <Compile Include="Areas\Home\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Home\HomeAreaRegistration.cs" />
     <Compile Include="Areas\Interviews\InterviewsAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -150,11 +152,18 @@
     <Content Include="Content\Fonts\RockSalt-webfont.eot" />
     <Content Include="Content\Fonts\RockSalt-webfont.ttf" />
     <Content Include="Content\Fonts\RockSalt-webfont.woff" />
+    <Content Include="Areas\Home\Views\Web.config" />
+    <Content Include="Areas\Home\Views\Home\Index.cshtml" />
     <Content Include="Areas\Engagements\Views\Engagement\Index.cshtml" />
+    <Content Include="Areas\Applications\Views\Application\Index.cshtml" />
+    <Content Include="Areas\Applications\Views\Application\Create.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Images\perscribo.png" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -166,6 +175,7 @@
     <Content Include="Scripts\jquery-2.1.1.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -173,6 +183,8 @@
     <Folder Include="Areas\Applications\Views\Shared\" />
     <Folder Include="Areas\Engagements\Models\" />
     <Folder Include="Areas\Engagements\Views\Shared\" />
+    <Folder Include="Areas\Home\Models\" />
+    <Folder Include="Areas\Home\Views\Shared\" />
     <Folder Include="Areas\Interviews\Controllers\" />
     <Folder Include="Areas\Interviews\Models\" />
     <Folder Include="Areas\Interviews\Views\Shared\" />

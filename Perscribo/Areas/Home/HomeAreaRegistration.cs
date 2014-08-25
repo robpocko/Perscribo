@@ -1,23 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace Perscribo.Areas.Applications
+namespace Perscribo.Areas.Home
 {
-    public class ApplicationsAreaRegistration : AreaRegistration
+    public class HomeAreaRegistration : AreaRegistration
     {
         public override string AreaName
         {
             get
             {
-                return "Applications";
+                return "Home";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
-
             context.MapRoute(
-                "Applications_default",
-                "Applications/{controller}/{action}/{id}",
+                "Home_default",
+                "Home/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

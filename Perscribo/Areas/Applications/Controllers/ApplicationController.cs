@@ -3,102 +3,78 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
+using Perscribo.EF.Library.DAL;
+using Perscribo.EF.Library.Models;
 
 namespace Perscribo.Areas.Applications.Controllers
 {
     public class ApplicationController : Controller
     {
-        //
-        // GET: /Applications/Application/
+        private PerscriboContext db = new PerscriboContext();
 
-        public ActionResult Index()
+        [HttpGet, OutputCache(NoStore = true, Location = OutputCacheLocation.None)]
+        public ActionResult Index(string verb)
         {
-            return View();
+            if ((verb ?? "").ToLower() == "new")
+            {
+                LoadSelectLists();
+
+                Role newRole = new Role();
+
+                return View("Create", newRole);
+            }
+            else
+            {
+                return View(db.Roles.Include("Agency").ToList());
+            }
         }
 
-        //
-        // GET: /Applications/Application/Details/5
-
-        public ActionResult Details(int id)
+        [HttpPost, OutputCache(NoStore = true, Location = OutputCacheLocation.None)]
+        [ActionName("Index")]
+        public ActionResult Create([Bind(Include = "PositionTitle,AppliedForOn,ReferenceNumber,PositionType,LowSalaryRange,HighSalaryRange,SalaryType,Status,AgentInterview,AgencyID,Consultant,Company")] Role newRole)
         {
-            return View();
-        }
+            newRole.Agency = db.Agencies.Where(a => a.ID == newRole.AgencyID.Value).Single();
 
-        //
-        // GET: /Applications/Application/Create
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        //
-        // POST: /Applications/Application/Create
-
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
+            db.Roles.Add(newRole);
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                db.SaveChanges();
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                string temp = ex.Message;
             }
+
+            return RedirectToAction("Index");
         }
 
-        //
-        // GET: /Applications/Application/Edit/5
-
-        public ActionResult Edit(int id)
+        private void LoadSelectLists(Role role = null)
         {
-            return View();
-        }
+            var positionTypes = from PositionType p in Enum.GetValues(typeof(PositionType))
+                                select new { ID = p, Name = p.ToString().Replace("_", " ") };
+            var salaryTypes = from SalaryType s in Enum.GetValues(typeof(SalaryType))
+                              select new { ID = s, Name = s.ToString().Replace("_", " ") };
+            var statusTypes = from RoleStatus r in Enum.GetValues(typeof(RoleStatus))
+                              select new { ID = r, Name = r.ToString().Replace("_", " ") };
+            //var agencies = from a in db.Agencies
+            //               orderby a.Name
+            //               select new { AgencyID = a.ID, Name = a.Name };
 
-        //
-        // POST: /Applications/Application/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
+            if (role != null)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                //  NOTE: The key (for ViewData) must match the Property name
+                ViewData["PositionType"] = new SelectList(positionTypes, "ID", "Name", role.PositionType);
+                ViewData["SalaryType"] = new SelectList(salaryTypes, "ID", "Name", role.SalaryType);
+                ViewData["Status"] = new SelectList(statusTypes, "ID", "Name", role.Status);
+                //ViewData["AgencyID"] = new SelectList(agencies, "AgencyID", "Name", role.Agency);
             }
-            catch
+            else
             {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Applications/Application/Delete/5
-
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Applications/Application/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+                ViewData["PositionType"] = new SelectList(positionTypes, "ID", "Name");
+                ViewData["SalaryType"] = new SelectList(salaryTypes, "ID", "Name");
+                ViewData["Status"] = new SelectList(statusTypes, "ID", "Name");
+                //ViewData["AgencyID"] = new SelectList(agencies, "AgencyID", "Name");
             }
         }
     }

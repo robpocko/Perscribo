@@ -14,8 +14,14 @@ namespace Perscribo
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "ApplicationDetails",
+                url: "Applications/{id}",
+                defaults: new { controller = "Applications", action = "Details" });
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
+                namespaces: new string[] { "Perscribo.Areas.Home.Controllers" },
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }

@@ -10,6 +10,19 @@
 }
 
 body {
+    background-color: #fff;
+    border-top: solid 10px #000;
+    color: #333;
+    font-size: .75em;
+    font-family: rock_saltregular, Verdana, Helvetica, Sans-Serif;
+    margin: 20px;
+    padding: 10px;
+}
+
+#body {
+    background-color: #efeeef;
+    clear: both;
+    padding-bottom: 35px;
 }
 
 .perscriboIcon {
@@ -21,6 +34,10 @@ body {
 
 header .content-wrapper {
     padding-top: 20px; 
+}
+
+header, footer, hgroup, nav, section {
+    display: block;
 }
 
 .float-left {
@@ -80,3 +97,30 @@ header .content-wrapper {
         display: inline;
         list-style: none;
     }
+
+/* menu
+----------------------------------------------------------*/
+ul#menu {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin: 0 0 5px;
+    padding: 0;
+    text-align: right;
+}
+
+    ul#menu li {
+        display: inline;
+        list-style: none;
+        padding-left: 15px;
+    }
+
+        ul#menu li a {
+            background: none;
+            color: #999;
+            text-decoration: none;
+        }
+
+        ul#menu li a:hover {
+            color: #333;
+            text-decoration: none;
+        }

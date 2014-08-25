@@ -1,0 +1,115 @@
+﻿@model Perscribo.EF.Library.Models.Role
+@using Perscribo.EF.Library.Models;
+@using System.Collections.Generic;
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Application</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Role</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="">
+            @Html.LabelFor(model => model.PositionTitle)
+        </div>
+        <div class="">
+            @Html.EditorFor(model => model.PositionTitle)
+            @Html.ValidationMessageFor(model => model.PositionTitle)
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.AppliedForOn)
+        </div>
+        <div class="">
+            @Html.EditorFor(model => model.AppliedForOn)
+            @Html.ValidationMessageFor(model => model.AppliedForOn)
+        </div>
+
+        <div class="">
+            Reference Number
+        </div>
+        <div class="">
+            @Html.EditorFor(model => model.ReferenceNumber)
+            @Html.ValidationMessageFor(model => model.ReferenceNumber)
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.PositionType)
+        </div>
+        <div class="">
+            @Html.DropDownList("PositionType", string.Empty)
+            @Html.ValidationMessageFor(model => model.PositionType)
+        </div>
+
+        <div class="">
+            Salary (Range)
+        </div>
+        <div class="">
+            <span class="col1">
+
+            </span>
+        </div>
+
+        <div class="">
+            @Html.EditorFor(model => model.LowSalaryRange)
+            @Html.ValidationMessageFor(model => model.LowSalaryRange)
+        </div>
+
+        <div class="">
+            @Html.EditorFor(model => model.HighSalaryRange)
+            @Html.ValidationMessageFor(model => model.HighSalaryRange)
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.SalaryType)
+        </div>
+        <div class="">
+            @Html.DropDownList("SalaryType", string.Empty)
+            @Html.ValidationMessageFor(model => model.SalaryType)
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.Status)
+        </div>
+        <div class="">
+            @Html.DropDownList("Status", string.Empty)
+            @Html.ValidationMessageFor(model => model.Status)
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.AgentInterview)
+        </div>
+        <div class="">
+            @Html.EditorFor(model => model.AgentInterview)
+            @Html.ValidationMessageFor(model => model.AgentInterview)
+        </div>
+
+
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript">
+    $(function()
+    {
+        $("#PositionTitle").width("400px");
+    })
+</script>
+

@@ -18,7 +18,7 @@ namespace Perscribo.Areas.Engagements.Controllers
         {
             var currentEngagement = db.Engagements
                 .Where(e => e.Commencement <= DateTime.Now && (e.Completion == null || e.Completion > DateTime.Now))
-                .ToList();
+                .First();
 
             return View(currentEngagement);
         }
