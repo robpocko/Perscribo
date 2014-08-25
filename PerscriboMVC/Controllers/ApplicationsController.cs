@@ -35,7 +35,7 @@ namespace PerscriboMVC.Controllers
         [ActionName("Index")]
         public ActionResult Create([Bind(Include="PositionTitle,AppliedForOn,ReferenceNumber,PositionType,LowSalaryRange,HighSalaryRange,SalaryType,Status,AgentInterview,AgencyID,Consultant,Company")] Role newRole)
         {
-            newRole.Agency = db.Agencies.Where(a => a.ID == newRole.AgencyID).Single();
+           // newRole.Agency = db.Agencies.Where(a => a.ID == newRole.AgencyID).Single();
 
             db.Roles.Add(newRole);
             try

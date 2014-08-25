@@ -10,8 +10,144 @@ namespace Perscribo.EF.Library.DAL
     {
         protected override void Seed(PerscriboContext context)
         {
+            AddMyProsperity(context);
+            AddSage(context);
             AddDnb(context);
             AddOtherApplications(context);
+        }
+
+        private void AddMyProsperity(PerscriboContext db)
+        {
+            #region Application Submitted
+
+            var roles = new List<Role>
+            {
+                new Role {
+                    PositionTitle = "Senior Developer",
+                    AppliedForOn = DateTime.Parse("15 December 2012 10:00"),
+                    PositionType = PositionType.Permanent,
+                    LowSalaryRange = 100000,
+                    SalaryType = SalaryType.Salary_Package,
+                    Status = RoleStatus.Company_Interview,
+                    Company = new Company{
+                        Name = "My Prosperity",
+                        Address = new Address{
+                            Street1 = "Firt Floor",
+                            Street2 = "1 Oxley Road",
+                            Suburb = "Hawthorn",
+                            StateID = StateName.Victoria,
+                            Postcode = "3122"
+                        },
+                        People = new List<Person>
+                        {
+                            new Person{FirstName = "Stephen", LastName = "Jackel"}
+                        }
+                    }
+                }
+            };
+            roles[0].CompanyInterviews = new List<Interview>
+            {
+                new Interview
+                {
+                    InterviewDate = DateTime.Parse("15 December 2012 14:30"),
+                    Interviewers = new List<Person>
+                    {
+                        roles[0].Company.People.First()
+                    }
+                },
+                new Interview 
+                {
+                    InterviewDate = DateTime.Parse("17 December 2012 14:30"),
+                    Interviewers = new List<Person>
+                    {
+                        roles[0].Company.People.First()
+                    }
+                }
+            };
+
+            //  lets save the role now
+            roles.ForEach(r => db.Roles.Add(r));
+            db.SaveChanges();
+
+            #endregion
+
+            #region Hired
+            roles[0].Status = RoleStatus.Closed;
+
+            var engagements = new List<Engagement>
+            {
+                new Engagement
+                {
+                    Address = roles[0].Company.Address,
+                    Commencement = DateTime.Parse("7 Jan 2013"),
+                    Completion = DateTime.Parse("8 Feb 2013"),
+                    Company = roles[0].Company,
+                    CompanyContact = roles[0].Company.People.First()
+                }
+            };
+            engagements.ForEach(e => db.Engagements.Add(e));
+            db.SaveChanges();
+
+            #endregion
+        }
+
+        private void AddSage(PerscriboContext db)
+        {
+            var roles = new List<Role>
+            {
+                new Role
+                {
+                    AppliedForOn = DateTime.Parse("10 Feb 2012 14:00"),
+                    Company = new Company
+                    {
+                        Name = "Sage Technology",
+                        People = new List<Person>
+                        {
+                            new Person{ FirstName = "Michael", LastName = "Calagaz", PhoneNumber = "5132 2600" },
+                            new Person{ FirstName = "Steven", LastName = "van der" }
+                        },
+                        Address = new Address
+                        {
+                            Street1 = "21 Hazelwood Road",
+                            Suburb = "Morwell",
+                            StateID = StateName.Victoria,
+                            Postcode = "3840"
+                        }
+                    },
+                    LowSalaryRange = 70000,
+                    SalaryType = SalaryType.Salary_Package,
+                    PositionTitle = "Senior Developer",
+                    PositionType = PositionType.Permanent,
+                    Status = RoleStatus.Closed
+                }
+            };
+            roles[0].CompanyInterviews = new List<Interview>
+            {
+                new Interview{
+                    InterviewDate = DateTime.Parse("7 Mar 2013"),
+                    Interviewers = new List<Person>
+                    {
+                        roles[0].Company.People.First(),
+                        roles[0].Company.People.Last()
+                    }
+                }
+            };
+
+            var engagements = new List<Engagement>
+            {
+                new Engagement
+                {
+                    Address = roles[0].Company.Address,
+                    Commencement = DateTime.Parse("2 April 2013"),
+                    Completion = DateTime.Parse("6 Dec 2013"),
+                    Company = roles[0].Company,
+                    CompanyContact = roles[0].Company.People.First()
+                }
+            };
+
+            roles.ForEach(r => db.Roles.Add(r));
+            engagements.ForEach(e => db.Engagements.Add(e));
+            db.SaveChanges();
         }
 
         private void AddDnb(PerscriboContext db)

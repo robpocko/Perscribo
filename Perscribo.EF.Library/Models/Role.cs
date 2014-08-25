@@ -40,11 +40,11 @@ namespace Perscribo.EF.Library.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d MMM yyyy}")]
         public DateTime? AgentInterview { get; set; }
 
-        public int AgencyID { get; set; }
+       // public int AgencyID { get; set; }
 
-        [Required]
+        //[Required]
         public virtual Agency Agency { get; set; }
-        [Required]
+        //[Required]
         public virtual Consultant Consultant { get; set; }
         public virtual Company Company { get; set; }
         public virtual ICollection<Interview> CompanyInterviews { get; set; }

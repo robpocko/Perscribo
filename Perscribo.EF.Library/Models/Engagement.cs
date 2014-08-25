@@ -20,9 +20,9 @@ namespace Perscribo.EF.Library.Models
         [NotMapped]
         public bool IsOpen { get { return !Completion.HasValue; } }
 
-        [Required]
+        //[Required]
         public virtual Agency Agency { get; set; }
-        [Required]
+        //[Required]
         public virtual Consultant Consultant { get; set; }
         [Required]
         public virtual Company Company { get; set; }
