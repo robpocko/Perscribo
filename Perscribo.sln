@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Perscribo.EF.TestHarness", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerscriboMVC", "PerscriboMVC\PerscriboMVC.csproj", "{7CA5942B-731A-486D-9F3C-63604733D4FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Perscribo", "Perscribo\Perscribo.csproj", "{91835488-E8BB-440C-8B52-0F2C8B412AC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,12 @@ Global
 		{7CA5942B-731A-486D-9F3C-63604733D4FF}.DeployWWW|Any CPU.Build.0 = DeployWWW|Any CPU
 		{7CA5942B-731A-486D-9F3C-63604733D4FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CA5942B-731A-486D-9F3C-63604733D4FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91835488-E8BB-440C-8B52-0F2C8B412AC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91835488-E8BB-440C-8B52-0F2C8B412AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91835488-E8BB-440C-8B52-0F2C8B412AC4}.DeployWWW|Any CPU.ActiveCfg = Debug|Any CPU
+		{91835488-E8BB-440C-8B52-0F2C8B412AC4}.DeployWWW|Any CPU.Build.0 = Debug|Any CPU
+		{91835488-E8BB-440C-8B52-0F2C8B412AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91835488-E8BB-440C-8B52-0F2C8B412AC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
