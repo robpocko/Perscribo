@@ -5,9 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Update Application</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -19,63 +20,73 @@
 
         <div class="editor-label">
             @Html.LabelFor(model => model.PositionTitle):
-            @Html.EditorFor(model => model.PositionTitle)
+            <span class="col2">
+                @Html.EditorFor(model => model.PositionTitle) 
+            </span>
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.AppliedForOn):
-            @Html.EditorFor(model => model.AppliedForOn)
+            <span class="col2" >
+                @Html.EditorFor(model => model.AppliedForOn)
+            </span>
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.ReferenceNumber):
-            @Html.EditorFor(model => model.ReferenceNumber)
-            @Html.ValidationMessageFor(model => model.ReferenceNumber)
+            <span class="col2">
+                @Html.EditorFor(model => model.ReferenceNumber)
+                @Html.ValidationMessageFor(model => model.ReferenceNumber)
+            </span>
         </div>
 
         <div>
             @Html.LabelFor(model => model.PositionType):
-            @Html.EditorFor(model => model.PositionType)
+            <span class="col2">
+                @Html.EditorFor(model => model.PositionType)
+            </span>     
         </div>
 
         <div class="editor-label">
             Salary Range:
-            @Html.EditorFor(model => model.LowSalaryRange) (low)
-            @Html.ValidationMessageFor(model => model.LowSalaryRange)
-            @Html.EditorFor(model => model.HighSalaryRange) (high)
-            @Html.ValidationMessageFor(model => model.HighSalaryRange)
-            @Html.DropDownList("SalaryType")
+            <span class="col2">
+                @Html.EditorFor(model => model.LowSalaryRange) (low)
+                @Html.ValidationMessageFor(model => model.LowSalaryRange)
+                @Html.EditorFor(model => model.HighSalaryRange) (high)
+                @Html.ValidationMessageFor(model => model.HighSalaryRange)
+                @Html.DropDownList("SalaryType")
+            </span>
         </div>
 
         <div class="editor-label">
             Agency:
-            @Html.EditorFor(model => model.Agency.Name)
-            Consultant:
-
-        </div>
-        
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ConsultantID)
-            @Html.ValidationMessageFor(model => model.ConsultantID)
+            <span class="col2">
+                @Html.DropDownList("AgencyID", string.Empty)
+                Consultant:
+                @Html.DropDownList("ConsultantID", string.Empty)
+            </span>
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CompanyID)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CompanyID)
-            @Html.ValidationMessageFor(model => model.CompanyID)
+            Company:
+            <span class="col2">
+                @Html.DropDownList("CompanyID", string.Empty)
+            </span>
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.AgentInterview):
-            @Html.EditorFor(model => model.AgentInterview)
-            @Html.ValidationMessageFor(model => model.AgentInterview)
+            <span class="col2">
+                @Html.EditorFor(model => model.AgentInterview)
+                @Html.ValidationMessageFor(model => model.AgentInterview)
+            </span>
         </div>
 
         <div>
             @Html.LabelFor(model => model.Status):
-            @Html.DropDownList("Status");
+            <span class="col2">
+                @Html.DropDownList("Status")
+            </span>           
         </div>
 
         <p>
@@ -93,7 +104,7 @@
         $('#PositionTitle').attr('readonly', true).width("500px");
         $('#AppliedForOn').attr('readonly', true);
         $('#PositionType').attr('readonly', true);
-        $('#Agency_Name').attr('readonly', true).width("500px");
+        $('#AgencyID').attr('readonly', true);
     });
 </script>
 

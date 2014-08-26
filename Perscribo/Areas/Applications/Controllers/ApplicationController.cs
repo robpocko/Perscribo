@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -33,7 +36,6 @@ namespace Perscribo.Areas.Applications.Controllers
                                 .ThenByDescending(r => r.AppliedForOn);
 
                 return View(roles.ToList());
-                //return View(db.Roles.Include("Agency").ToList());
             }
         }
 
@@ -63,6 +65,7 @@ namespace Perscribo.Areas.Applications.Controllers
                 var application = db.Roles.Where(r => r.ID == applicationId).FirstOrDefault();
                 
                 LoadSelectLists(application);
+                LoadAgencyConsultants(application);
                 
                 return View(application);
             }
@@ -73,9 +76,24 @@ namespace Perscribo.Areas.Applications.Controllers
         }
 
         [HttpPost, OutputCache(NoStore = true, Location = OutputCacheLocation.None)]
-        public ActionResult Edit(Role application)
+        public ActionResult Edit([Bind(Include = "ID,PositionTitle,AppliedForOn,ReferenceNumber,PositionType,LowSalaryRange,HighSalaryRange,SalaryType,Status,AgentInterview,AgencyID,ConsultantID,CompanyID")] Role application)
         {
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Entry(application).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (RetryLimitExceededException)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your System Administrator.");
+            }
+
+            return View(application);
         }
 
         private void LoadSelectLists(Role role = null)
@@ -99,8 +117,8 @@ namespace Perscribo.Areas.Applications.Controllers
                 ViewData["PositionType"] = new SelectList(positionTypes, "ID", "Name", role.PositionType);
                 ViewData["SalaryType"] = new SelectList(salaryTypes, "ID", "Name", role.SalaryType);
                 ViewData["Status"] = new SelectList(statusTypes, "ID", "Name", role.Status);
-                ViewData["AgencyID"] = new SelectList(agencies, "AgencyID", "Name", role.Agency);
-                ViewData["CompanyID"] = new SelectList(companies, "CompanyID", "Name", role.Company);
+                ViewData["AgencyID"] = new SelectList(agencies, "AgencyID", "Name", role.AgencyID);
+                ViewData["CompanyID"] = new SelectList(companies, "CompanyID", "Name", role.CompanyID);
             }
             else
             {
@@ -109,6 +127,22 @@ namespace Perscribo.Areas.Applications.Controllers
                 ViewData["Status"] = new SelectList(statusTypes, "ID", "Name");
                 ViewData["AgencyID"] = new SelectList(agencies, "AgencyID", "Name");
                 ViewData["CompanyID"] = new SelectList(companies, "CompanyID", "Name");
+            }
+        }
+
+        private void LoadAgencyConsultants(Role application)
+        {
+            var consultants = from c in db.Consultants
+                              where c.Agency.ID == application.AgencyID
+                              orderby c.LastName, c.FirstName
+                              select new { ConsultantID = c.ID, Name = c.FirstName + " " + c.LastName };
+            if (application.Consultant != null)
+            {
+                ViewData["ConsultantID"] = new SelectList(consultants, "ConsultantID", "Name", application.ConsultantID);
+            }
+            else
+            {
+                ViewData["ConsultantID"] = new SelectList(consultants, "ConsultantID", "Name");
             }
         }
     }

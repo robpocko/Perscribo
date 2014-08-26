@@ -21,93 +21,79 @@
 
         <div class="">
             @Html.LabelFor(model => model.PositionTitle)
-        </div>
-        <div class="">
-            @Html.EditorFor(model => model.PositionTitle)
-            @Html.ValidationMessageFor(model => model.PositionTitle)
+            <span class="col2">
+                @Html.EditorFor(model => model.PositionTitle)
+                @Html.ValidationMessageFor(model => model.PositionTitle)
+            </span>
         </div>
 
         <div class="">
             @Html.LabelFor(model => model.AppliedForOn)
-        </div>
-        <div class="">
-            @Html.EditorFor(model => model.AppliedForOn)
-            @Html.ValidationMessageFor(model => model.AppliedForOn)
+            <span class="col2">
+                @Html.EditorFor(model => model.AppliedForOn)
+                @Html.ValidationMessageFor(model => model.AppliedForOn)
+            </span>
         </div>
 
         <div class="">
             Reference Number
-        </div>
-        <div class="">
-            @Html.EditorFor(model => model.ReferenceNumber)
-            @Html.ValidationMessageFor(model => model.ReferenceNumber)
+            <span class="col2">
+                @Html.EditorFor(model => model.ReferenceNumber)
+                @Html.ValidationMessageFor(model => model.ReferenceNumber)
+            </span>
         </div>
 
         <div class="">
             @Html.LabelFor(model => model.PositionType)
-        </div>
-        <div class="">
-            @Html.DropDownList("PositionType", string.Empty)
-            @Html.ValidationMessageFor(model => model.PositionType)
+            <span class="col2">
+                @Html.DropDownList("PositionType", string.Empty)
+                @Html.ValidationMessageFor(model => model.PositionType)
+            </span>
         </div>
 
-        <div style="height: 55px;">
-            <div class="">
-                <span class="col1">
-                    Salary (Range)
-                </span>
-                <span class="col3">
-                    Salary Type
-                </span>
-            </div>
-            <br />
-            <div class="">
-                <span class="col1">
-                    @Html.EditorFor(model => model.LowSalaryRange) (low)
-                </span>
-                <span class="col2">
-                    @Html.EditorFor(model => model.HighSalaryRange) (high)
-                </span>
-                <span class="col3">
-                    @Html.DropDownList("SalaryType", string.Empty)
-                </span>
+        <div class="">
+            Salary Range
+            <span class="col2">
+                @Html.EditorFor(model => model.LowSalaryRange) (low)
                 @Html.ValidationMessageFor(model => model.LowSalaryRange)
+                @Html.EditorFor(model => model.HighSalaryRange) (high)
                 @Html.ValidationMessageFor(model => model.HighSalaryRange)
+                @Html.DropDownList("SalaryType", string.Empty)
                 @Html.ValidationMessageFor(model => model.SalaryType)
-            </div>
+            </span>
         </div>
 
         <div class="">
             @Html.LabelFor(model => model.Status)
-        </div>
-        <div class="">
-            @Html.DropDownList("Status", string.Empty)
-            @Html.ValidationMessageFor(model => model.Status)
+            <span class="col2">
+                @Html.DropDownList("Status", string.Empty)
+                @Html.ValidationMessageFor(model => model.Status)
+            </span>
         </div>
 
         <div class="">
             @Html.LabelFor(model => model.Agency)
-        </div>
-        <div class="">
-            @Html.DropDownList("AgencyID", string.Empty)
-            @{
-                Html.RenderAction("Consultants", "PartialViews");
-             }
+            <span class="col2">
+                @Html.DropDownList("AgencyID", string.Empty)
+                @{
+                    Html.RenderAction("Consultants", "PartialViews");
+                }
+            </span>
         </div>
 
         <div class="">
             @Html.LabelFor(model => model.Company)
-        </div>
-        <div class="">
-            @Html.DropDownList("CompanyID", string.Empty)
+            <span class="col2">
+                @Html.DropDownList("CompanyID", string.Empty)
+            </span>
         </div>
 
         <div class="">
             @Html.LabelFor(model => model.AgentInterview)
-        </div>
-        <div class="">
-            @Html.EditorFor(model => model.AgentInterview)
-            @Html.ValidationMessageFor(model => model.AgentInterview)
+            <span class="col2">
+                @Html.EditorFor(model => model.AgentInterview)
+                @Html.ValidationMessageFor(model => model.AgentInterview)
+            </span>
         </div>
 
         <p>

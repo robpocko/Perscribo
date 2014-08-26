@@ -130,7 +130,7 @@ ul#menu {
 }
 .col2 {
     position: absolute;
-    left: 200px;
+    left: 205px;
 }
 .col3 {
     position: absolute;
@@ -167,4 +167,9 @@ input[type="checkbox"].input-validation-error {
 
 .validation-summary-valid {
     display: none;
+}
+
+td
+{
+    padding-right: 20px;
 }
