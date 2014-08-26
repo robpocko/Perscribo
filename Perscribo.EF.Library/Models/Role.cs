@@ -41,6 +41,8 @@ namespace Perscribo.EF.Library.Models
         public DateTime? AgentInterview { get; set; }
 
         public int? AgencyID { get; set; }
+        public int? ConsultantID { get; set; }
+        public int? CompanyID { get; set; }
 
         //[Required]
         public virtual Agency Agency { get; set; }

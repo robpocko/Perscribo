@@ -19,6 +19,13 @@ namespace Perscribo
                 defaults: new { controller = "Applications", action = "Details" });
 
             routes.MapRoute(
+                name: "Consultants",
+                url: "PartialViews/Consultants/{id}",
+                namespaces: new string[] { "Perscribo.Areas.Applications.Controllers" },
+                defaults: new { controller = "PartialViews", action = "Consultants", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 namespaces: new string[] { "Perscribo.Areas.Home.Controllers" },

@@ -1,0 +1,102 @@
+﻿@model Perscribo.EF.Library.Models.Role
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Role</legend>
+
+        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.AgencyID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PositionTitle):
+            @Html.EditorFor(model => model.PositionTitle)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AppliedForOn):
+            @Html.EditorFor(model => model.AppliedForOn)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ReferenceNumber):
+            @Html.EditorFor(model => model.ReferenceNumber)
+            @Html.ValidationMessageFor(model => model.ReferenceNumber)
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.PositionType):
+            @Html.EditorFor(model => model.PositionType)
+        </div>
+
+        <div class="editor-label">
+            Salary Range:
+            @Html.EditorFor(model => model.LowSalaryRange) (low)
+            @Html.ValidationMessageFor(model => model.LowSalaryRange)
+            @Html.EditorFor(model => model.HighSalaryRange) (high)
+            @Html.ValidationMessageFor(model => model.HighSalaryRange)
+            @Html.DropDownList("SalaryType")
+        </div>
+
+        <div class="editor-label">
+            Agency:
+            @Html.EditorFor(model => model.Agency.Name)
+            Consultant:
+
+        </div>
+        
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ConsultantID)
+            @Html.ValidationMessageFor(model => model.ConsultantID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CompanyID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CompanyID)
+            @Html.ValidationMessageFor(model => model.CompanyID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AgentInterview):
+            @Html.EditorFor(model => model.AgentInterview)
+            @Html.ValidationMessageFor(model => model.AgentInterview)
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Status):
+            @Html.DropDownList("Status");
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#PositionTitle').attr('readonly', true).width("500px");
+        $('#AppliedForOn').attr('readonly', true);
+        $('#PositionType').attr('readonly', true);
+        $('#Agency_Name').attr('readonly', true).width("500px");
+    });
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

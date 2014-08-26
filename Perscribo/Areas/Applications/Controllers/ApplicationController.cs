@@ -26,16 +26,21 @@ namespace Perscribo.Areas.Applications.Controllers
             }
             else
             {
-                return View(db.Roles.Include("Agency").ToList());
+                var roles = db.Roles
+                                .Include("Agency")
+                                .Where(r => r.Status != RoleStatus.Closed)
+                                .OrderByDescending(r => r.Status)
+                                .ThenByDescending(r => r.AppliedForOn);
+
+                return View(roles.ToList());
+                //return View(db.Roles.Include("Agency").ToList());
             }
         }
 
         [HttpPost, OutputCache(NoStore = true, Location = OutputCacheLocation.None)]
         [ActionName("Index")]
-        public ActionResult Create([Bind(Include = "PositionTitle,AppliedForOn,ReferenceNumber,PositionType,LowSalaryRange,HighSalaryRange,SalaryType,Status,AgentInterview,AgencyID,Consultant,Company")] Role newRole)
+        public ActionResult Create([Bind(Include = "PositionTitle,AppliedForOn,ReferenceNumber,PositionType,LowSalaryRange,HighSalaryRange,SalaryType,Status,AgentInterview,AgencyID,ConsultantID,CompanyID")] Role newRole)
         {
-            newRole.Agency = db.Agencies.Where(a => a.ID == newRole.AgencyID.Value).Single();
-
             db.Roles.Add(newRole);
             try
             {
@@ -49,6 +54,30 @@ namespace Perscribo.Areas.Applications.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet, OutputCache(NoStore = true, Location = OutputCacheLocation.None)]
+        public ActionResult Edit(string id)
+        {
+            if (id != null)
+            {
+                int applicationId = int.Parse(id);
+                var application = db.Roles.Where(r => r.ID == applicationId).FirstOrDefault();
+                
+                LoadSelectLists(application);
+                
+                return View(application);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        [HttpPost, OutputCache(NoStore = true, Location = OutputCacheLocation.None)]
+        public ActionResult Edit(Role application)
+        {
+            return RedirectToAction("Index");
+        }
+
         private void LoadSelectLists(Role role = null)
         {
             var positionTypes = from PositionType p in Enum.GetValues(typeof(PositionType))
@@ -57,9 +86,12 @@ namespace Perscribo.Areas.Applications.Controllers
                               select new { ID = s, Name = s.ToString().Replace("_", " ") };
             var statusTypes = from RoleStatus r in Enum.GetValues(typeof(RoleStatus))
                               select new { ID = r, Name = r.ToString().Replace("_", " ") };
-            //var agencies = from a in db.Agencies
-            //               orderby a.Name
-            //               select new { AgencyID = a.ID, Name = a.Name };
+            var agencies = from a in db.Agencies
+                           orderby a.Name
+                           select new { AgencyID = a.ID, Name = a.Name };
+            var companies = from c in db.Companies
+                            orderby c.Name
+                            select new { CompanyID = c.ID, Name = c.Name };
 
             if (role != null)
             {
@@ -67,14 +99,16 @@ namespace Perscribo.Areas.Applications.Controllers
                 ViewData["PositionType"] = new SelectList(positionTypes, "ID", "Name", role.PositionType);
                 ViewData["SalaryType"] = new SelectList(salaryTypes, "ID", "Name", role.SalaryType);
                 ViewData["Status"] = new SelectList(statusTypes, "ID", "Name", role.Status);
-                //ViewData["AgencyID"] = new SelectList(agencies, "AgencyID", "Name", role.Agency);
+                ViewData["AgencyID"] = new SelectList(agencies, "AgencyID", "Name", role.Agency);
+                ViewData["CompanyID"] = new SelectList(companies, "CompanyID", "Name", role.Company);
             }
             else
             {
                 ViewData["PositionType"] = new SelectList(positionTypes, "ID", "Name");
                 ViewData["SalaryType"] = new SelectList(salaryTypes, "ID", "Name");
                 ViewData["Status"] = new SelectList(statusTypes, "ID", "Name");
-                //ViewData["AgencyID"] = new SelectList(agencies, "AgencyID", "Name");
+                ViewData["AgencyID"] = new SelectList(agencies, "AgencyID", "Name");
+                ViewData["CompanyID"] = new SelectList(companies, "CompanyID", "Name");
             }
         }
     }
