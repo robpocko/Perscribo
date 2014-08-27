@@ -190,15 +190,15 @@ td
     width: 70px;
 }
 #PhoneNumber {
-    width: 130px;
+    width: 100px;
 }
-#Street1, #Street2, #Street3 {
+#Address_Street1, #Address_Street2, #Address_Street3 {
     width: 300px;
 }
-#Suburb {
+#Address_Suburb {
     width: 200px;
 }
-#Postcode {
+#Address_Postcode {
     width: 50px;
 }
 #Name {

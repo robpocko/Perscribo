@@ -23,17 +23,5 @@ namespace Perscribo.Areas.Applications.Controllers
 
             return PartialView("_ConsultantsDropDown", consultants);
         }
-
-
-
-        public virtual PartialViewResult AddressEdit(string id)
-        {
-            int addressId = id == null ? 0 : int.Parse(id);
-
-            var address = db.Addresses.Where(a => a.ID == addressId).FirstOrDefault();
-
-            return PartialView("_AddressEdit", address);
-        }
-
     }
 }

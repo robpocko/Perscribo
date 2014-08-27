@@ -35,6 +35,14 @@
     </div>
 
     <div class="">
+        State:
+        <span class="col2">
+            @Html.DropDownList("StateID", string.Empty)
+            @Html.ValidationMessageFor(model => model.StateID)
+        </span>
+    </div>
+
+    <div class="">
         @Html.LabelFor(model => model.Postcode):
         <span class="col2">
             @Html.EditorFor(model => model.Postcode)

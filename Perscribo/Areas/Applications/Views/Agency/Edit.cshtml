@@ -14,7 +14,8 @@ else
     <h2>Update Agency</h2>
 }
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -22,6 +23,7 @@ else
         <legend>Agency</legend>
 
         @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.AddressID)
 
         <div class="">
             Name:
@@ -39,15 +41,15 @@ else
             </span>
         </div>
 
-        @if (Model.Address != null)
+        @if (Model.Address == null)
         {
-            Html.RenderAction("AddressEdit", "PartialViews");
+            <span style="display: inline">@Html.EditorFor(model => model.Address)</span>
         }
         else
         {
-            Response.Write("do you want to add an address?");
+            @Html.EditorFor(model => model.Address)
+    
         }
-
         <p>
             <input type="submit" value="Save" />
         </p>
@@ -61,3 +63,11 @@ else
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script type="text/javascript">
+    $(function () {
+        $("#addAddress").click(function () {
+            alert('hi');
+        });
+    })
+</script>

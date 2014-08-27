@@ -63,12 +63,6 @@ namespace Perscribo.Areas.Applications.Controllers
         {
             return new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.Consultants);
         }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.PartialViewResult AddressEdit()
-        {
-            return new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.AddressEdit);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public PartialViewsController Actions { get { return MVC.Applications.PartialViews; } }
@@ -86,14 +80,12 @@ namespace Perscribo.Areas.Applications.Controllers
         public class ActionNamesClass
         {
             public readonly string Consultants = "Consultants";
-            public readonly string AddressEdit = "AddressEdit";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Consultants = "Consultants";
-            public const string AddressEdit = "AddressEdit";
         }
 
 
@@ -102,14 +94,6 @@ namespace Perscribo.Areas.Applications.Controllers
         public ActionParamsClass_Consultants ConsultantsParams { get { return s_params_Consultants; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Consultants
-        {
-            public readonly string id = "id";
-        }
-        static readonly ActionParamsClass_AddressEdit s_params_AddressEdit = new ActionParamsClass_AddressEdit();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_AddressEdit AddressEditParams { get { return s_params_AddressEdit; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_AddressEdit
         {
             public readonly string id = "id";
         }
@@ -123,10 +107,8 @@ namespace Perscribo.Areas.Applications.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string _AddressEdit = "_AddressEdit";
                 public readonly string _ConsultantsDropDown = "_ConsultantsDropDown";
             }
-            public readonly string _AddressEdit = "~/Areas/Applications/Views/PartialViews/_AddressEdit.cshtml";
             public readonly string _ConsultantsDropDown = "~/Areas/Applications/Views/PartialViews/_ConsultantsDropDown.cshtml";
         }
     }
@@ -145,18 +127,6 @@ namespace Perscribo.Areas.Applications.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.Consultants);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             ConsultantsOverride(callInfo, id);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void AddressEditOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo, string id);
-
-        [NonAction]
-        public override System.Web.Mvc.PartialViewResult AddressEdit(string id)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.AddressEdit);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            AddressEditOverride(callInfo, id);
             return callInfo;
         }
 
