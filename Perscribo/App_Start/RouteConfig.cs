@@ -26,10 +26,26 @@ namespace Perscribo
             );
 
             routes.MapRoute(
+                name: "AddressEdit",
+                url: "PartialViews/Address/{id}",
+                namespaces: new string[] { "Perscribo.Areas.Applications.Controllers" },
+                defaults: new
+                {
+                    controller = "PartialViews",
+                    action = "AddressEdit",
+                    id = UrlParameter.Optional
+                }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 namespaces: new string[] { "Perscribo.Areas.Home.Controllers" },
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { 
+                    controller = "Home", 
+                    action = "Index", 
+                    id = UrlParameter.Optional
+                }
             );
         }
     }

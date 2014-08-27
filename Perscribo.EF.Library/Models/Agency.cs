@@ -15,6 +15,7 @@ namespace Perscribo.EF.Library.Models
 
         [Required]
         [MaxLength(12, ErrorMessage = "Phone Number must be no longer than 12 characters")]
+        [Display(Name="Phone Number")]
         public string PhoneNumber { get; set; }
 
         public virtual Address Address { get; set; }

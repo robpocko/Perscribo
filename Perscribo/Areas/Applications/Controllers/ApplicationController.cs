@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
 using Perscribo.EF.Library.DAL;
@@ -12,12 +9,12 @@ using Perscribo.EF.Library.Models;
 
 namespace Perscribo.Areas.Applications.Controllers
 {
-    public class ApplicationController : Controller
+    public partial class ApplicationController : Controller
     {
         private PerscriboContext db = new PerscriboContext();
 
         [HttpGet, OutputCache(NoStore = true, Location = OutputCacheLocation.None)]
-        public ActionResult Index(string verb)
+        public virtual ActionResult Index(string verb)
         {
             if ((verb ?? "").ToLower() == "new")
             {
@@ -41,7 +38,7 @@ namespace Perscribo.Areas.Applications.Controllers
 
         [HttpPost, OutputCache(NoStore = true, Location = OutputCacheLocation.None)]
         [ActionName("Index")]
-        public ActionResult Create([Bind(Include = "PositionTitle,AppliedForOn,ReferenceNumber,PositionType,LowSalaryRange,HighSalaryRange,SalaryType,Status,AgentInterview,AgencyID,ConsultantID,CompanyID")] Role newRole)
+        public virtual ActionResult Create([Bind(Include = "PositionTitle,AppliedForOn,ReferenceNumber,PositionType,LowSalaryRange,HighSalaryRange,SalaryType,Status,AgentInterview,AgencyID,ConsultantID,CompanyID")] Role newRole)
         {
             db.Roles.Add(newRole);
             try
@@ -57,7 +54,7 @@ namespace Perscribo.Areas.Applications.Controllers
         }
 
         [HttpGet, OutputCache(NoStore = true, Location = OutputCacheLocation.None)]
-        public ActionResult Edit(string id)
+        public virtual ActionResult Edit(string id)
         {
             if (id != null)
             {
@@ -76,7 +73,7 @@ namespace Perscribo.Areas.Applications.Controllers
         }
 
         [HttpPost, OutputCache(NoStore = true, Location = OutputCacheLocation.None)]
-        public ActionResult Edit([Bind(Include = "ID,PositionTitle,AppliedForOn,ReferenceNumber,PositionType,LowSalaryRange,HighSalaryRange,SalaryType,Status,AgentInterview,AgencyID,ConsultantID,CompanyID")] Role application)
+        public virtual ActionResult Edit([Bind(Include = "ID,PositionTitle,AppliedForOn,ReferenceNumber,PositionType,LowSalaryRange,HighSalaryRange,SalaryType,Status,AgentInterview,AgencyID,ConsultantID,CompanyID")] Role application)
         {
             try
             {

@@ -8,11 +8,11 @@ using Perscribo.EF.Library.Models;
 
 namespace Perscribo.Areas.Applications.Controllers
 {
-    public class PartialViewsController : Controller
+    public partial class PartialViewsController : Controller
     {
         private PerscriboContext db = new PerscriboContext();
 
-        public PartialViewResult Consultants(string id)
+        public virtual PartialViewResult Consultants(string id)
         {
             List<Consultant> consultants = new List<Consultant>();
             if (id != null)
@@ -26,9 +26,13 @@ namespace Perscribo.Areas.Applications.Controllers
 
 
 
-        public PartialViewResult AddressEdit()
+        public virtual PartialViewResult AddressEdit(string id)
         {
-            return PartialView();
+            int addressId = id == null ? 0 : int.Parse(id);
+
+            var address = db.Addresses.Where(a => a.ID == addressId).FirstOrDefault();
+
+            return PartialView("_AddressEdit", address);
         }
 
     }

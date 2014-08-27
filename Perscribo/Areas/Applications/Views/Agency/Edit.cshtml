@@ -1,0 +1,63 @@
+﻿@model Perscribo.EF.Library.Models.Agency
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.ID == 0)
+{
+    <h2>New Agency</h2>
+}
+else
+{
+    <h2>Update Agency</h2>
+}
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Agency</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="">
+            Name:
+            <span class="col2">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </span>
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.PhoneNumber):
+            <span class="col2">
+                @Html.EditorFor(model => model.PhoneNumber)
+                @Html.ValidationMessageFor(model => model.PhoneNumber)
+            </span>
+        </div>
+
+        @if (Model.Address != null)
+        {
+            Html.RenderAction("AddressEdit", "PartialViews");
+        }
+        else
+        {
+            Response.Write("do you want to add an address?");
+        }
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

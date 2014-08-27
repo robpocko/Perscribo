@@ -173,3 +173,34 @@ td
 {
     padding-right: 20px;
 }
+
+#PositionTitle {
+    width: 400px;
+}
+#AppliedForOn, #AgentInterview {
+    width: 150px;
+}
+#ReferenceNumber {
+    width: 100px;
+}
+#PositionType {
+    width: 200px;
+}
+#LowSalaryRange, #HighSalaryRange {
+    width: 70px;
+}
+#PhoneNumber {
+    width: 130px;
+}
+#Street1, #Street2, #Street3 {
+    width: 300px;
+}
+#Suburb {
+    width: 200px;
+}
+#Postcode {
+    width: 50px;
+}
+#Name {
+    width: 400px;
+}

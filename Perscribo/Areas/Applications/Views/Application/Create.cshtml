@@ -78,6 +78,7 @@
                 @{
                     Html.RenderAction("Consultants", "PartialViews");
                 }
+                <a href="#">Add New Agency</a>
             </span>
         </div>
 
@@ -85,6 +86,7 @@
             @Html.LabelFor(model => model.Company)
             <span class="col2">
                 @Html.DropDownList("CompanyID", string.Empty)
+                <a href="#">Add New Company</a>
             </span>
         </div>
 
@@ -112,10 +114,6 @@
 
 <script type="text/javascript">
     $(function () {
-        $("#PositionTitle").width("400px");
-        $("#LowSalaryRange").width("70px");
-        $("#HighSalaryRange").width("70px");
-
         $('#AgencyID').change(function () {
             //alert('click');
             var url = "PartialViews/Consultants/" + $('#AgencyID').val();

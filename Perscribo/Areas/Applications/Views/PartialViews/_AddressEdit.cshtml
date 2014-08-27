@@ -1,2 +1,45 @@
 ﻿@model Perscribo.EF.Library.Models.Address
 
+<fieldset>
+    <legend>Address</legend>
+    
+    @Html.HiddenFor(model => model.ID)
+
+    <div class="">
+        Street:
+    <span class="col2">
+        @Html.EditorFor(model => model.Street1)
+        @Html.ValidationMessageFor(model => model.Street1)
+    </span>
+    </div>
+    <div class="">
+        &nbsp;
+        <span class="col2">
+            @Html.EditorFor(model => model.Street2)
+            @Html.ValidationMessageFor(model => model.Street2)
+        </span>
+    </div>
+    <div class="">
+        &nbsp;
+        <span class="col2">
+            @Html.EditorFor(model => model.Street3)
+            @Html.ValidationMessageFor(model => model.Street3)
+        </span>
+    </div>
+    <div class="">
+        @Html.LabelFor(model => model.Suburb):
+        <span class="col2">
+            @Html.EditorFor(model => model.Suburb)
+            @Html.ValidationMessageFor(model => model.Suburb)
+        </span>
+    </div>
+
+    <div class="">
+        @Html.LabelFor(model => model.Postcode):
+        <span class="col2">
+            @Html.EditorFor(model => model.Postcode)
+            @Html.ValidationMessageFor(model => model.Postcode)
+        </span>
+    </div>
+</fieldset>
+

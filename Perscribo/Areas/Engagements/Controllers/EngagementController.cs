@@ -9,12 +9,12 @@ using Perscribo.EF.Library.Models;
 
 namespace Perscribo.Areas.Engagements.Controllers
 {
-    public class EngagementController : Controller
+    public partial class EngagementController : Controller
     {
         private PerscriboContext db = new PerscriboContext();
 
         [HttpGet, OutputCache(NoStore = true, Location = OutputCacheLocation.None)]
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             var currentEngagement = db.Engagements
                 .Where(e => e.Commencement <= DateTime.Now && (e.Completion == null || e.Completion > DateTime.Now))
