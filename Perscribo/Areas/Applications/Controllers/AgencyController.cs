@@ -39,6 +39,19 @@ namespace Perscribo.Areas.Applications.Controllers
             db.Agencies.Add(newAgency);
             try
             {
+                //  must check if address details were actually provided
+                ClearValidationErrorsForNonExistentAddress(newAgency);
+                //if (newAgency.Address != null && newAgency.Address.Suburb == null)
+                //{
+                //    db.Entry(newAgency.Address).State = EntityState.Unchanged;
+                //    newAgency.Address = null;
+                //    ModelState.Remove("Address.ID");
+                //    ModelState.Remove("Address.Street1");
+                //    ModelState.Remove("Address.Suburb");
+                //    ModelState.Remove("Address.StateID");
+                //    ModelState.Remove("Address.Postcode");
+                //}
+                
                 db.SaveChanges();
             }
             catch (Exception ex)
@@ -70,6 +83,8 @@ namespace Perscribo.Areas.Applications.Controllers
         [HttpPost, OutputCache(NoStore = true, Location = OutputCacheLocation.None)]
         public virtual ActionResult Edit([Bind(Include = "ID,Name,PhoneNumber,AddressID,Address")] Agency agency)
         {
+            ClearValidationErrorsForNonExistentAddress(agency);
+
             if (agency.Address != null)
             {
                 if (agency.AddressID == null)
@@ -113,6 +128,24 @@ namespace Perscribo.Areas.Applications.Controllers
             else
             {
                 ViewData["StateID"] = new SelectList(states, "ID", "Name");
+            }
+        }
+
+        private void ClearValidationErrorsForNonExistentAddress(Agency agency)
+        {
+            if (agency.Address != null && agency.Address.Suburb == null)
+            {
+                db.Entry(agency.Address).State = EntityState.Unchanged;
+                agency.Address = null;
+                ModelState.Remove("Address.ID"); 
+                ModelState.Remove("Address.Street1");
+                ModelState.Remove("Address.Suburb");
+                ModelState.Remove("Address.StateID");
+                ModelState.Remove("Address.Postcode");
+            }
+            else if (agency.AddressID == null)
+            {
+                ModelState.Remove("Address.ID");
             }
         }
     }

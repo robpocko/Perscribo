@@ -43,12 +43,15 @@ else
 
         @if (Model.Address == null)
         {
-            <span style="display: inline">@Html.EditorFor(model => model.Address)</span>
+            <span id="addressControl" style="display: none">
+                @Html.EditorFor(model => model.Address)
+
+            </span>
+            <a href="#" id="showAddress">Add Address</a>
         }
         else
         {
-            @Html.EditorFor(model => model.Address)
-    
+            <span id="addressControl" style="display: inline">@Html.EditorFor(model => model.Address)</span>
         }
         <p>
             <input type="submit" value="Save" />
@@ -66,8 +69,16 @@ else
 
 <script type="text/javascript">
     $(function () {
-        $("#addAddress").click(function () {
-            alert('hi');
+
+        //function enableValidation(flag) {
+        //    $("#Address_Street1").attr('data-val', flag);
+        //    $("#Address_Suburb").attr('data-val', flag);
+        //    $("#Address_Postcode").attr('data-val', flag);
+        //}
+
+        $("#showAddress").click(function () {
+            $("#showAddress").css("display", "none");
+            $("#addressControl").css("display", "inline");
         });
     })
 </script>
