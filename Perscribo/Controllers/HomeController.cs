@@ -8,8 +8,6 @@ namespace Perscribo.Controllers
 {
     public partial class HomeController : Controller
     {
-        //
-        // GET: /Home/
 
         public virtual ActionResult Index()
         {

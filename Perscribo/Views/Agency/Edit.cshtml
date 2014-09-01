@@ -63,6 +63,7 @@ else
             $.get("Address", {},
                 function (data) {
                     $('#addressControl').html(data);
+                   // $('#showAddress').css
                 },
                 "html");
         })
@@ -76,5 +77,3 @@ else
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-
-

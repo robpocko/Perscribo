@@ -33,6 +33,7 @@ public static partial class MVC
     public static HomeClass HomeArea { get { return s_Home; } }
     static readonly InterviewsClass s_Interviews = new InterviewsClass();
     public static InterviewsClass Interviews { get { return s_Interviews; } }
+    public static Perscribo.Controllers.AgencyController Agency = new Perscribo.Controllers.T4MVC_AgencyController();
     public static Perscribo.Controllers.HomeController Home = new Perscribo.Controllers.T4MVC_HomeController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }

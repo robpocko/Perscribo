@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Perscribo.EF.Library.Models
 {
-    public class Company
+    public class Company : IAddressedEntity
     {
         [Key]
         public int ID { get; set; }

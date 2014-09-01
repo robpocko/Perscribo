@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Perscribo.EF.Library.Models
 {
-    public class Engagement
+    public class Engagement : IAddressedEntity
     {
         public int ID { get; set; }
 

@@ -40,7 +40,7 @@ namespace Perscribo.Areas.Applications.Controllers
             try
             {
                 //  must check if address details were actually provided
-                ClearValidationErrorsForNonExistentAddress(newAgency);
+                
                 //if (newAgency.Address != null && newAgency.Address.Suburb == null)
                 //{
                 //    db.Entry(newAgency.Address).State = EntityState.Unchanged;
@@ -83,7 +83,6 @@ namespace Perscribo.Areas.Applications.Controllers
         [HttpPost, OutputCache(NoStore = true, Location = OutputCacheLocation.None)]
         public virtual ActionResult Edit([Bind(Include = "ID,Name,PhoneNumber,AddressID,Address")] Agency agency)
         {
-            ClearValidationErrorsForNonExistentAddress(agency);
 
             if (agency.Address != null)
             {
@@ -116,6 +115,18 @@ namespace Perscribo.Areas.Applications.Controllers
             return View(agency);
         }
 
+        [HttpGet]
+        public virtual ActionResult Address(string agencyId)
+        {
+            Agency agency = null;
+            
+            
+
+                
+
+            return PartialView("Address", agency);
+        }
+
         private void LoadSelectLists(Address address = null)
         {
             var states = from StateName s in Enum.GetValues(typeof(StateName))
@@ -131,22 +142,22 @@ namespace Perscribo.Areas.Applications.Controllers
             }
         }
 
-        private void ClearValidationErrorsForNonExistentAddress(Agency agency)
-        {
-            if (agency.Address != null && agency.Address.Suburb == null)
-            {
-                db.Entry(agency.Address).State = EntityState.Unchanged;
-                agency.Address = null;
-                ModelState.Remove("Address.ID"); 
-                ModelState.Remove("Address.Street1");
-                ModelState.Remove("Address.Suburb");
-                ModelState.Remove("Address.StateID");
-                ModelState.Remove("Address.Postcode");
-            }
-            else if (agency.AddressID == null)
-            {
-                ModelState.Remove("Address.ID");
-            }
-        }
+        //private void ClearValidationErrorsForNonExistentAddress(Agency agency)
+        //{
+        //    if (agency.Address != null && agency.Address.Suburb == null)
+        //    {
+        //        db.Entry(agency.Address).State = EntityState.Unchanged;
+        //        agency.Address = null;
+        //        ModelState.Remove("Address.ID"); 
+        //        ModelState.Remove("Address.Street1");
+        //        ModelState.Remove("Address.Suburb");
+        //        ModelState.Remove("Address.StateID");
+        //        ModelState.Remove("Address.Postcode");
+        //    }
+        //    else if (agency.AddressID == null)
+        //    {
+        //        ModelState.Remove("Address.ID");
+        //    }
+        //}
     }
 }

@@ -75,6 +75,12 @@ namespace Perscribo.Areas.Applications.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Address()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Address);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public AgencyController Actions { get { return MVC.Applications.Agency; } }
@@ -94,6 +100,7 @@ namespace Perscribo.Areas.Applications.Controllers
             public readonly string Index = "Index";
             public readonly string Create = "Index";
             public readonly string Edit = "Edit";
+            public readonly string Address = "Address";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -102,6 +109,7 @@ namespace Perscribo.Areas.Applications.Controllers
             public const string Index = "Index";
             public const string Create = "Index";
             public const string Edit = "Edit";
+            public const string Address = "Address";
         }
 
 
@@ -130,6 +138,14 @@ namespace Perscribo.Areas.Applications.Controllers
             public readonly string id = "id";
             public readonly string agency = "agency";
         }
+        static readonly ActionParamsClass_Address s_params_Address = new ActionParamsClass_Address();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Address AddressParams { get { return s_params_Address; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Address
+        {
+            public readonly string agencyId = "agencyId";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -145,6 +161,13 @@ namespace Perscribo.Areas.Applications.Controllers
             }
             public readonly string Edit = "~/Areas/Applications/Views/Agency/Edit.cshtml";
             public readonly string Index = "~/Areas/Applications/Views/Agency/Index.cshtml";
+            static readonly _EditorTemplatesClass s_EditorTemplates = new _EditorTemplatesClass();
+            public _EditorTemplatesClass EditorTemplates { get { return s_EditorTemplates; } }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public partial class _EditorTemplatesClass
+            {
+                public readonly string Address = "Address";
+            }
         }
     }
 
@@ -198,6 +221,18 @@ namespace Perscribo.Areas.Applications.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "agency", agency);
             EditOverride(callInfo, agency);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AddressOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string agencyId);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Address(string agencyId)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Address);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "agencyId", agencyId);
+            AddressOverride(callInfo, agencyId);
             return callInfo;
         }
 

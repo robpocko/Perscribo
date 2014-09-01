@@ -63,6 +63,7 @@
     <Compile Include="Models\Consultant.cs" />
     <Compile Include="Models\Engagement.cs" />
     <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\IAddressedEntity.cs" />
     <Compile Include="Models\Interview.cs" />
     <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Person.cs" />
