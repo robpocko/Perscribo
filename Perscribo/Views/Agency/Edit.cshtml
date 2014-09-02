@@ -60,7 +60,7 @@ else
 <script type="text/javascript">
     $(function () {
         $('#showAddress').click(function (e) {
-            e.preventDefault(); alert('mmm');
+            e.preventDefault(); 
             $.get("Address", {},
                 function (data) {
                     $('#addressControl').html(data);

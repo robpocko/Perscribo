@@ -69,15 +69,15 @@ namespace Perscribo.Controllers
             db.Agencies.Add(agency);
             try
             {
-                if (ModelState.IsValid)
-                {
+                //if (ModelState.IsValid)
+                //{
                     if (agency.ID != 0)
                     {
                         db.Entry(agency).State = EntityState.Modified;
                     }
 
                     db.SaveChanges();
-                }
+                //}
             }
             catch (Exception ex)
             {
@@ -103,11 +103,11 @@ namespace Perscribo.Controllers
             if (address != null)
             {
                 //  NOTE: The key (for ViewData) must match the Property name
-                ViewData["StateID"] = new SelectList(states, "ID", "Name", address.StateID);
+                ViewData["Address_StateID"] = new SelectList(states, "ID", "Name", address.StateID);
             }
             else
             {
-                ViewData["StateID"] = new SelectList(states, "ID", "Name");
+                ViewData["Address_StateID"] = new SelectList(states, "ID", "Name");
             }
         }
     }
