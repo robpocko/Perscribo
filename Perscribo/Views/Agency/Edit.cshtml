@@ -59,11 +59,12 @@ else
 
 <script type="text/javascript">
     $(function () {
-        $('#showAddress').click(function () {
+        $('#showAddress').click(function (e) {
+            e.preventDefault(); alert('mmm');
             $.get("Address", {},
                 function (data) {
                     $('#addressControl').html(data);
-                   // $('#showAddress').css
+                    $('#showAddress').hide();
                 },
                 "html");
         })

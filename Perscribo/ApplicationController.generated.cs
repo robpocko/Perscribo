@@ -23,13 +23,13 @@ using System.Web.Routing;
 using T4MVC;
 namespace Perscribo.Controllers
 {
-    public partial class AgencyController
+    public partial class ApplicationController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public AgencyController() { }
+        public ApplicationController() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected AgencyController(Dummy d) { }
+        protected ApplicationController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -65,13 +65,13 @@ namespace Perscribo.Controllers
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public AgencyController Actions { get { return MVC.Agency; } }
+        public ApplicationController Actions { get { return MVC.Application; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Agency";
+        public readonly string Name = "Application";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Agency";
+        public const string NameConst = "Application";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -81,7 +81,6 @@ namespace Perscribo.Controllers
         {
             public readonly string Index = "Index";
             public readonly string Edit = "Edit";
-            public readonly string Address = "Address";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -89,7 +88,6 @@ namespace Perscribo.Controllers
         {
             public const string Index = "Index";
             public const string Edit = "Edit";
-            public const string Address = "Address";
         }
 
 
@@ -100,7 +98,6 @@ namespace Perscribo.Controllers
         public class ActionParamsClass_Edit
         {
             public readonly string id = "id";
-            public readonly string agency = "agency";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -115,15 +112,15 @@ namespace Perscribo.Controllers
                 public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
             }
-            public readonly string Edit = "~/Views/Agency/Edit.cshtml";
-            public readonly string Index = "~/Views/Agency/Index.cshtml";
+            public readonly string Edit = "~/Views/Application/Edit.cshtml";
+            public readonly string Index = "~/Views/Application/Index.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_AgencyController : Perscribo.Controllers.AgencyController
+    public partial class T4MVC_ApplicationController : Perscribo.Controllers.ApplicationController
     {
-        public T4MVC_AgencyController() : base(Dummy.Instance) { }
+        public T4MVC_ApplicationController() : base(Dummy.Instance) { }
 
         [NonAction]
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
@@ -145,29 +142,6 @@ namespace Perscribo.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             EditOverride(callInfo, id);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Perscribo.EF.Library.Models.Agency agency);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Edit(Perscribo.EF.Library.Models.Agency agency)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "agency", agency);
-            EditOverride(callInfo, agency);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void AddressOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Address()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Address);
-            AddressOverride(callInfo);
             return callInfo;
         }
 
