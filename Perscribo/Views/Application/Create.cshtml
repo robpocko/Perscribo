@@ -8,11 +8,12 @@
 
 <h2>New Application</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-   <fieldset>
+    <fieldset>
         <legend>Role</legend>
 
         @Html.HiddenFor(model => model.ID)
@@ -74,7 +75,7 @@
             <span class="col2">
                 @Html.DropDownList("AgencyID", string.Empty)
                 @{
-                    Html.RenderAction("Consultants", "PartialViews");
+    Html.RenderAction("Consultants", "PartialViews");
                 }
                 <a href="#">Add New Agency</a>
             </span>
@@ -86,6 +87,17 @@
                 @Html.DropDownList("CompanyID", string.Empty)
                 <a href="#">Add New Company</a>
             </span>
+        </div>
+        <div class="irrelevantt">
+            <fieldset>
+                <legend>New Company</legend>
+                <div class="">
+                    @Html.LabelFor(model => model.Company):
+                   <div class="col2">
+                       @Html.EditorFor(model => model.Company.Name)
+                   </div>
+                </div>
+            </fieldset>
         </div>
 
         <div class="">

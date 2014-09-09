@@ -204,3 +204,8 @@ td
 #Name {
     width: 400px;
 }
+
+.irrelevant
+{
+    display: none;
+}
