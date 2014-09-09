@@ -124,7 +124,14 @@ namespace Perscribo.Controllers
         [HttpPost]
         public virtual ActionResult ConsultantEdit([Bind(Include = "ID,FirstName,LastName,PhoneNumber,Email,AgencyID")] Consultant consultant)
         {
-
+            if (consultant.ID != 0)
+            {
+                db.Entry(consultant).State = EntityState.Modified;
+            }
+            else
+            {
+                db.Entry(consultant).State = EntityState.Added;
+            }
             return null;
         }
 
