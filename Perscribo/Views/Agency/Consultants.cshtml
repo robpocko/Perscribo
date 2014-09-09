@@ -1,13 +1,13 @@
-﻿@model IEnumerable<Perscribo.EF.Library.Models.Consultant>
+﻿@model Perscribo.EF.Library.Models.Agency
 
 @{
     ViewBag.Title = "Consultants";
 }
 
-<h2>@Model.FirstOrDefault().Agency.Name : Consultants</h2>
+<h2>@Model.Name : Consultants</h2>
 
 <p>
-    @Html.ActionLink("Add New Consultant", "ConsultantEdit")
+    @Html.ActionLink("Add New Consultant", "ConsultantEdit", new { agencyId = Model.ID })
 </p>
 
 <table>
@@ -23,7 +23,7 @@
 
 
 
-    @foreach (var Consultant in Model)
+    @foreach (var Consultant in Model.Consultants)
     {
         <tr>
             <td>
@@ -36,7 +36,7 @@
                 @Html.DisplayFor(modelItem => Consultant.PhoneNumber)
             </td>
             <td>
-                @Html.ActionLink("Edit", "ConsultantEdit", new { id = Consultant.ID }) |
+                @Html.ActionLink("Edit", "ConsultantEdit", new { agencyId = Model.ID, consultantId = Consultant.ID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = Consultant.ID })
             </td>
         </tr>

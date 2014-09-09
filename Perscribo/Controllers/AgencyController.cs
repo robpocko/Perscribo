@@ -102,20 +102,24 @@ namespace Perscribo.Controllers
             int agencyId = int.Parse(id);
             var agency = db.Agencies.Where(a => a.ID == agencyId).FirstOrDefault();
 
-            return View(agency.Consultants);
+            return View(agency);
         }
 
         [HttpGet]
-        public virtual ActionResult ConsultantEdit(string id)
+        public virtual ActionResult ConsultantEdit(string agencyId, string consultantId)
         {
-            if (id == null)
+            int agency_Id = int.Parse(agencyId);
+
+            if (consultantId == null)
             {
                 var newConsultant = new Consultant();
+                newConsultant.Agency = db.Agencies.Where(a => a.ID == agency_Id).FirstOrDefault();
+                newConsultant.AgencyID = agency_Id;
                 return View(newConsultant);
             }
             else
             {
-                int consultantID = int.Parse(id);
+                int consultantID = int.Parse(consultantId);
                 var consultant = db.Consultants.Where(c => c.ID == consultantID).FirstOrDefault();
                 return View(consultant);
             }
@@ -132,7 +136,13 @@ namespace Perscribo.Controllers
             {
                 db.Entry(consultant).State = EntityState.Added;
             }
-            return null;
+
+            if (ModelState.IsValid)
+            {
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Consultants", new { id = consultant.AgencyID });
         }
 
         private void LoadSelectLists(Address address = null)

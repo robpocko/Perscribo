@@ -38,6 +38,19 @@ namespace Perscribo
             //);
 
             routes.MapRoute(
+                name: "ConsultantsEdit",
+                url: "Agency/ConsultantEdit/{agencyId}/{consultantId}",
+                namespaces: new string[] {"Perscribo.Controllers"},
+                defaults: new 
+                {
+                    controller = "Agency",
+                    action = "ConsultantEdit",
+                    agencyId = UrlParameter.Optional,
+                    consultantId = UrlParameter.Optional
+                }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 namespaces: new string[] { "Perscribo.Controllers" },
