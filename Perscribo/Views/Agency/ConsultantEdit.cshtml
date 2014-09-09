@@ -1,0 +1,67 @@
+﻿@model Perscribo.EF.Library.Models.Consultant
+
+@{
+    ViewBag.Title = "ConsultantEdit";
+}
+
+@if (Model.ID == 0)
+{
+    <h2>New Consultant</h2>
+}
+else
+{
+    <h2>Update Consultant</h2>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Consultant</legend>
+
+        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.AgencyID)
+
+        <div class="">
+            @Html.LabelFor(model => model.FirstName):
+            <span class="col2">
+                @Html.EditorFor(model => model.FirstName)
+                @Html.ValidationMessageFor(model => model.FirstName)
+            </span>
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.LastName):
+            <span class="col2">
+                @Html.EditorFor(model => model.LastName)
+                @Html.ValidationMessageFor(model => model.LastName)
+            </span>
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.PhoneNumber):
+            <span class="col2">
+                @Html.EditorFor(model => model.PhoneNumber)
+                @Html.ValidationMessageFor(model => model.PhoneNumber)
+            </span>
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.Email):
+            <span class="col2">
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </span>
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

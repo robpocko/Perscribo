@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Perscribo.EF.Library.Models.Consultant>
+
+@{
+    ViewBag.Title = "Consultants";
+}
+
+<h2>@Model.FirstOrDefault().Agency.Name : Consultants</h2>
+
+<p>
+    @Html.ActionLink("Add New Consultant", "ConsultantEdit")
+</p>
+
+<table>
+    <tr>
+        <th>Name
+        </th>
+        <th>eMail Address
+        </th>
+        <th>Phone Number
+        </th>
+        <th></th>
+    </tr>
+
+
+
+    @foreach (var Consultant in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Consultant.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Consultant.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Consultant.PhoneNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "ConsultantEdit", new { id = Consultant.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = Consultant.ID })
+            </td>
+        </tr>
+    }
+</table>
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

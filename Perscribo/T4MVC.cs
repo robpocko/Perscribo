@@ -36,6 +36,7 @@ public static partial class MVC
     public static Perscribo.Controllers.AgencyController Agency = new Perscribo.Controllers.T4MVC_AgencyController();
     public static Perscribo.Controllers.ApplicationController Application = new Perscribo.Controllers.T4MVC_ApplicationController();
     public static Perscribo.Controllers.HomeController Home = new Perscribo.Controllers.T4MVC_HomeController();
+    public static Perscribo.Controllers.PartialViewsController PartialViews = new Perscribo.Controllers.T4MVC_PartialViewsController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 

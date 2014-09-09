@@ -162,6 +162,7 @@
     <Compile Include="Controllers\AgencyController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PartialViewsController.cs" />
     <Compile Include="Engagements.EngagementController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -181,6 +182,9 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Interviews.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PartialViewsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -253,6 +257,10 @@
     <Content Include="Views\Shared\EditorTemplates\Address.cshtml" />
     <Content Include="Views\Application\Index.cshtml" />
     <Content Include="Views\Application\Edit.cshtml" />
+    <Content Include="Views\Application\Create.cshtml" />
+    <Content Include="Views\PartialViews\_ConsultantsDropDown.cshtml" />
+    <Content Include="Views\Agency\Consultants.cshtml" />
+    <Content Include="Views\Agency\ConsultantEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

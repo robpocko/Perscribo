@@ -96,6 +96,38 @@ namespace Perscribo.Controllers
             return PartialView("EditorTemplates/Address", agency);
         }
 
+        [HttpGet]
+        public virtual ActionResult Consultants(string id)
+        {
+            int agencyId = int.Parse(id);
+            var agency = db.Agencies.Where(a => a.ID == agencyId).FirstOrDefault();
+
+            return View(agency.Consultants);
+        }
+
+        [HttpGet]
+        public virtual ActionResult ConsultantEdit(string id)
+        {
+            if (id == null)
+            {
+                var newConsultant = new Consultant();
+                return View(newConsultant);
+            }
+            else
+            {
+                int consultantID = int.Parse(id);
+                var consultant = db.Consultants.Where(c => c.ID == consultantID).FirstOrDefault();
+                return View(consultant);
+            }
+        }
+
+        [HttpPost]
+        public virtual ActionResult ConsultantEdit([Bind(Include = "ID,FirstName,LastName,PhoneNumber,Email,AgencyID")] Consultant consultant)
+        {
+
+            return null;
+        }
+
         private void LoadSelectLists(Address address = null)
         {
             var states = from StateName s in Enum.GetValues(typeof(StateName))
@@ -103,11 +135,11 @@ namespace Perscribo.Controllers
             if (address != null)
             {
                 //  NOTE: The key (for ViewData) must match the Property name
-                ViewData["Address_StateID"] = new SelectList(states, "ID", "Name", address.StateID);
+                ViewData["Address.StateID"] = new SelectList(states, "ID", "Name", address.StateID);
             }
             else
             {
-                ViewData["Address_StateID"] = new SelectList(states, "ID", "Name");
+                ViewData["Address.StateID"] = new SelectList(states, "ID", "Name");
             }
         }
     }
