@@ -21,15 +21,15 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace Perscribo.Areas.Home.Controllers
+namespace Perscribo.Controllers
 {
-    public partial class HomeController
+    public partial class CompanyController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public HomeController() { }
+        public CompanyController() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected HomeController(Dummy d) { }
+        protected CompanyController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -59,13 +59,13 @@ namespace Perscribo.Areas.Home.Controllers
 
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public HomeController Actions { get { return MVC.HomeArea.Home; } }
+        public CompanyController Actions { get { return MVC.Company; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "Home";
+        public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Home";
+        public readonly string Name = "Company";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Home";
+        public const string NameConst = "Company";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -93,14 +93,16 @@ namespace Perscribo.Areas.Home.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string Index = "Index";
             }
+            public readonly string Index = "~/Views/Company/Index.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_HomeController : Perscribo.Areas.Home.Controllers.HomeController
+    public partial class T4MVC_CompanyController : Perscribo.Controllers.CompanyController
     {
-        public T4MVC_HomeController() : base(Dummy.Instance) { }
+        public T4MVC_CompanyController() : base(Dummy.Instance) { }
 
         [NonAction]
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);

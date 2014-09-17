@@ -308,7 +308,9 @@ namespace Perscribo.EF.Library.DAL
                     },
                     Tasks = new List<Task>
                     {
-                        new Task { Title = "Account Maintenance Defects" }
+                        new Task { Title = "Account Maintenance Defects" },
+                        new Task { Title = "Scoring Engine Enhancements" },
+                        new Task { Title = "Consumer Maintenance Enhancements" }
                     }
                 }
             };

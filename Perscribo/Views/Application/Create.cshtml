@@ -77,25 +77,53 @@
                 @{
     Html.RenderAction("Consultants", "PartialViews");
                 }
-                <a href="#">Add New Agency</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" id="addAgency">Add New Agency</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#" id="addConsultant">Add New Consultant</a>
             </span>
+        </div>
+        <div id="newAgency" class="irrelevant">
+            <fieldset>
+                <legend>New Agency</legend>
+                <div class="">
+                    @Html.LabelFor(model => model.Agency):
+                   <span class="col2">
+                       @Html.EditorFor(model => model.Agency.Name)
+                       @Html.ValidationMessageFor(model => model.Agency.Name)
+                       <input type="button" value="Save" id="saveAgency" />
+                   </span>
+                </div>
+            </fieldset>
+        </div>
+        <div id="newConsultant" class="irrelevant">
+            <fieldset>
+                <legend>New Consultant</legend>
+                <div class="">
+                    @Html.LabelFor(model => model.Consultant):
+                   <span class="col2">
+                       @Html.EditorFor(model => model.Consultant.FirstName)
+                       @Html.ValidationMessageFor(model => model.Company.Name)
+                       <input type="button" value="Save" id="saveConsultant" />
+                   </span>
+                </div>
+            </fieldset>
         </div>
 
         <div class="">
             @Html.LabelFor(model => model.Company)
             <span class="col2">
                 @Html.DropDownList("CompanyID", string.Empty)
-                <a href="#">Add New Company</a>
+                <a href="#" id="addCompany">Add New Company</a>
             </span>
         </div>
-        <div class="irrelevantt">
+        <div id="newCompany" class="irrelevant">
             <fieldset>
                 <legend>New Company</legend>
                 <div class="">
                     @Html.LabelFor(model => model.Company):
-                   <div class="col2">
+                   <span class="col2">
                        @Html.EditorFor(model => model.Company.Name)
-                   </div>
+                       @Html.ValidationMessageFor(model => model.Company.Name)
+                       <input type="button" value="Save" id="saveCompany" />
+                   </span>
                 </div>
             </fieldset>
         </div>
@@ -109,7 +137,7 @@
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Save" id="SubmitButton" />
         </p>
     </fieldset>
 }
@@ -124,6 +152,9 @@
 
 <script type="text/javascript">
     $(function () {
+        $("#Company_Name").prop('disabled', true);
+        $("#Agency_Name").prop('disabled', true);
+
         $('#AgencyID').change(function () {
             var url = "PartialViews/Consultants/" + $('#AgencyID').val();
             $.ajax({
@@ -133,6 +164,60 @@
                     $('#ConsultantID').html(data);
                 }
             });
+        });
+
+        $('#addAgency').click(function (e) {
+            e.preventDefault();
+            $("#Agency_Name").prop('disabled', false);
+            $("#SubmitButton").prop('disabled', true);
+            $('#newAgency').css("display", "inline");
+        });
+        $('#addConsultant').click(function (e) {
+            e.preventDefault();
+            $("#SubmitButton").prop('disabled', true);
+        });
+
+        $('#addCompany').click(function (e) {
+            e.preventDefault();
+            $("#Company_Name").prop('disabled', false);
+            $("#SubmitButton").prop('disabled', true);
+            $('#newCompany').css("display", "inline");
+        });
+
+        $('#saveAgency').click(function (e) {
+            var url = "Application/QuickAgencySave/" + $("#Agency_Name").val();
+            $.ajax({
+                url: url,
+                dataType: "html",
+                success: function (data) {
+
+                },
+                fail: function () {
+                    alert('it did not work');
+                }
+            });
+
+            $("#Agency_Name").prop('disabled', true);
+            $("#SubmitButton").prop('disabled', false);
+            $('#newAgency').css("display", "none");
+        });
+
+        $('#saveCompany').click(function (e) {
+            var url = "Application/QuickCompanySave/" + $("#Company_Name").val();
+            $.ajax({
+                url: url,
+                dataType: "html",
+                success: function (data) {
+                    
+                },
+                fail: function () {
+                    alert('it did not work');
+                }
+            });
+
+            $("#Company_Name").prop('disabled', true);
+            $("#SubmitButton").prop('disabled', false);
+            $('#newCompany').css("display", "none");
         });
     })
 </script>

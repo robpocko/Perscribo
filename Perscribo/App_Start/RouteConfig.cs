@@ -13,10 +13,15 @@ namespace Perscribo
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //routes.MapRoute(
-            //    name: "ApplicationDetails",
-            //    url: "Applications/{id}",
-            //    defaults: new { controller = "Applications", action = "Details" });
+            routes.MapRoute(
+                name: "QuickAgency",
+                url: "Application/QuickAgencySave/{newAgencyName}",
+                defaults: new { controller = "Application", action = "QuickAgencySave", newAgencyName = UrlParameter.Optional });
+
+            routes.MapRoute(
+                name: "QuickCompany",
+                url: "Application/QuickCompanySave/{newCompanyName}",
+                defaults: new { controller = "Application", action = "QuickCompanySave", newCompanyName = UrlParameter.Optional });
 
             //routes.MapRoute(
             //    name: "Consultants",

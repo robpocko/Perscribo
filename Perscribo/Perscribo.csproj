@@ -137,51 +137,19 @@
     <Compile Include="ApplicationController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Applications.AgencyController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Applications.ApplicationController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Applications.PartialViewsController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Applications.SharedController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="Areas\Applications\ApplicationsAreaRegistration.cs" />
-    <Compile Include="Areas\Applications\Controllers\AgencyController.cs" />
-    <Compile Include="Areas\Applications\Controllers\ApplicationController.cs" />
-    <Compile Include="Areas\Applications\Controllers\PartialViewsController.cs" />
-    <Compile Include="Areas\Engagements\Controllers\EngagementController.cs" />
-    <Compile Include="Areas\Engagements\EngagementsAreaRegistration.cs" />
-    <Compile Include="Areas\Home\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Home\HomeAreaRegistration.cs" />
-    <Compile Include="Areas\Interviews\InterviewsAreaRegistration.cs" />
+    <Compile Include="CompanyController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AgencyController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PartialViewsController.cs" />
-    <Compile Include="Engagements.EngagementController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Engagements.SharedController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Home.HomeController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Home.SharedController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="HomeController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Interviews.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="PartialViewsController.generated.cs">
@@ -207,14 +175,6 @@
     <Content Include="Content\Fonts\RockSalt-webfont.eot" />
     <Content Include="Content\Fonts\RockSalt-webfont.ttf" />
     <Content Include="Content\Fonts\RockSalt-webfont.woff" />
-    <Content Include="Areas\Home\Views\Web.config" />
-    <Content Include="Areas\Engagements\Views\Engagement\Index.cshtml" />
-    <Content Include="Areas\Applications\Views\Application\Index.cshtml" />
-    <Content Include="Areas\Applications\Views\Application\Create.cshtml" />
-    <Content Include="Areas\Applications\Views\PartialViews\_ConsultantsDropDown.cshtml" />
-    <Content Include="Areas\Applications\Views\Application\Edit.cshtml" />
-    <Content Include="Areas\Applications\Views\Agency\Index.cshtml" />
-    <Content Include="Areas\Applications\Views\Agency\Edit.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Images\close.png" />
     <Content Include="Images\perscribo.png" />
@@ -261,41 +221,20 @@
     <Content Include="Views\PartialViews\_ConsultantsDropDown.cshtml" />
     <Content Include="Views\Agency\Consultants.cshtml" />
     <Content Include="Views\Agency\ConsultantEdit.cshtml" />
+    <Content Include="Views\Company\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Applications\Models\" />
-    <Folder Include="Areas\Applications\Views\Shared\EditorTemplates\" />
-    <Folder Include="Areas\Engagements\Models\" />
-    <Folder Include="Areas\Engagements\Views\Shared\" />
-    <Folder Include="Areas\Home\Models\" />
-    <Folder Include="Areas\Home\Views\Home\" />
-    <Folder Include="Areas\Home\Views\Shared\" />
-    <Folder Include="Areas\Interviews\Controllers\" />
-    <Folder Include="Areas\Interviews\Models\" />
-    <Folder Include="Areas\Interviews\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Applications\Views\Web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Areas\Interviews\Views\Web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Areas\Engagements\Views\Web.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Perscribo.EF.Library\Perscribo.EF.Library.csproj">
       <Project>{0239fc99-7e15-4246-906e-707abe27f191}</Project>
       <Name>Perscribo.EF.Library</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Areas\Applications\Views\Agency\EditorTemplates\Address.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

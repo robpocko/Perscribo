@@ -69,6 +69,12 @@ namespace Perscribo.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Consultants);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult ConsultantEdit()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ConsultantEdit);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public AgencyController Actions { get { return MVC.Agency; } }
@@ -89,6 +95,7 @@ namespace Perscribo.Controllers
             public readonly string Edit = "Edit";
             public readonly string Address = "Address";
             public readonly string Consultants = "Consultants";
+            public readonly string ConsultantEdit = "ConsultantEdit";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -98,6 +105,7 @@ namespace Perscribo.Controllers
             public const string Edit = "Edit";
             public const string Address = "Address";
             public const string Consultants = "Consultants";
+            public const string ConsultantEdit = "ConsultantEdit";
         }
 
 
@@ -118,6 +126,16 @@ namespace Perscribo.Controllers
         {
             public readonly string id = "id";
         }
+        static readonly ActionParamsClass_ConsultantEdit s_params_ConsultantEdit = new ActionParamsClass_ConsultantEdit();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_ConsultantEdit ConsultantEditParams { get { return s_params_ConsultantEdit; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_ConsultantEdit
+        {
+            public readonly string agencyId = "agencyId";
+            public readonly string consultantId = "consultantId";
+            public readonly string consultant = "consultant";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -128,9 +146,13 @@ namespace Perscribo.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string ConsultantEdit = "ConsultantEdit";
+                public readonly string Consultants = "Consultants";
                 public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
             }
+            public readonly string ConsultantEdit = "~/Views/Agency/ConsultantEdit.cshtml";
+            public readonly string Consultants = "~/Views/Agency/Consultants.cshtml";
             public readonly string Edit = "~/Views/Agency/Edit.cshtml";
             public readonly string Index = "~/Views/Agency/Index.cshtml";
         }
@@ -196,6 +218,31 @@ namespace Perscribo.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Consultants);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             ConsultantsOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ConsultantEditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string agencyId, string consultantId);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ConsultantEdit(string agencyId, string consultantId)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ConsultantEdit);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "agencyId", agencyId);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "consultantId", consultantId);
+            ConsultantEditOverride(callInfo, agencyId, consultantId);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ConsultantEditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Perscribo.EF.Library.Models.Consultant consultant);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ConsultantEdit(Perscribo.EF.Library.Models.Consultant consultant)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ConsultantEdit);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "consultant", consultant);
+            ConsultantEditOverride(callInfo, consultant);
             return callInfo;
         }
 

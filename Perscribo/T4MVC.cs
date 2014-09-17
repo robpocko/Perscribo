@@ -25,16 +25,9 @@ using T4MVC;
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static partial class MVC
 {
-    static readonly ApplicationsClass s_Applications = new ApplicationsClass();
-    public static ApplicationsClass Applications { get { return s_Applications; } }
-    static readonly EngagementsClass s_Engagements = new EngagementsClass();
-    public static EngagementsClass Engagements { get { return s_Engagements; } }
-    static readonly HomeClass s_Home = new HomeClass();
-    public static HomeClass HomeArea { get { return s_Home; } }
-    static readonly InterviewsClass s_Interviews = new InterviewsClass();
-    public static InterviewsClass Interviews { get { return s_Interviews; } }
     public static Perscribo.Controllers.AgencyController Agency = new Perscribo.Controllers.T4MVC_AgencyController();
     public static Perscribo.Controllers.ApplicationController Application = new Perscribo.Controllers.T4MVC_ApplicationController();
+    public static Perscribo.Controllers.CompanyController Company = new Perscribo.Controllers.T4MVC_CompanyController();
     public static Perscribo.Controllers.HomeController Home = new Perscribo.Controllers.T4MVC_HomeController();
     public static Perscribo.Controllers.PartialViewsController PartialViews = new Perscribo.Controllers.T4MVC_PartialViewsController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
@@ -42,35 +35,6 @@ public static partial class MVC
 
 namespace T4MVC
 {
-    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class ApplicationsClass
-    {
-        public readonly string Name = "Applications";
-        public Perscribo.Areas.Applications.Controllers.AgencyController Agency = new Perscribo.Areas.Applications.Controllers.T4MVC_AgencyController();
-        public Perscribo.Areas.Applications.Controllers.ApplicationController Application = new Perscribo.Areas.Applications.Controllers.T4MVC_ApplicationController();
-        public Perscribo.Areas.Applications.Controllers.PartialViewsController PartialViews = new Perscribo.Areas.Applications.Controllers.T4MVC_PartialViewsController();
-        public T4MVC.Applications.SharedController Shared = new T4MVC.Applications.SharedController();
-    }
-    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class EngagementsClass
-    {
-        public readonly string Name = "Engagements";
-        public Perscribo.Areas.Engagements.Controllers.EngagementController Engagement = new Perscribo.Areas.Engagements.Controllers.T4MVC_EngagementController();
-        public T4MVC.Engagements.SharedController Shared = new T4MVC.Engagements.SharedController();
-    }
-    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class HomeClass
-    {
-        public readonly string Name = "Home";
-        public Perscribo.Areas.Home.Controllers.HomeController Home = new Perscribo.Areas.Home.Controllers.T4MVC_HomeController();
-        public T4MVC.Home.SharedController Shared = new T4MVC.Home.SharedController();
-    }
-    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class InterviewsClass
-    {
-        public readonly string Name = "Interviews";
-        public T4MVC.Interviews.SharedController Shared = new T4MVC.Interviews.SharedController();
-    }
 }
 
 namespace T4MVC

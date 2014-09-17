@@ -23,6 +23,13 @@ namespace Perscribo.Controllers
                 LoadSelectLists();
 
                 Role newRole = new Role();
+                newRole.AppliedForOn = new DateTime(
+                    DateTime.Now.Year, 
+                    DateTime.Now.Month, 
+                    DateTime.Now.Day, 
+                    DateTime.Now.Hour, 
+                    30 * (DateTime.Now.Minute / 30), 
+                    0);
 
                 return View("Create", newRole);
             }
@@ -92,6 +99,40 @@ namespace Perscribo.Controllers
             }
 
             return View(application);
+        }
+
+        public virtual void QuickCompanySave(string newCompanyName)
+        {
+            if (newCompanyName != null && newCompanyName.Trim().Length > 0)
+            {
+                db.Companies.Add(new Company { Name = newCompanyName.Trim() });
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    string temp = ex.Message;
+                }
+
+            }
+        }
+
+        public virtual void QuickAgencySave(string newAgencyName)
+        {
+            if (newAgencyName != null && newAgencyName.Trim().Length > 0)
+            {
+                db.Agencies.Add(new Agency { Name = newAgencyName.Trim() });
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    string temp = ex.Message;
+                }
+
+            }
         }
 
         private void LoadSelectLists(Role role = null)
