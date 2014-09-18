@@ -3,7 +3,14 @@
 <fieldset>
     <legend>Address</legend>
     
-    @Html.HiddenFor(model => model.Address.ID)
+    @if (Model == null)
+    {
+        @Html.HiddenFor(model => model.Address.ID, new { disabled = "disabled" })
+    }
+    else
+    {
+        @Html.HiddenFor(model => model.Address.ID)
+    }
 
     <div class="">
         Street:

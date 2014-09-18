@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Perscribo.EF.Library.Models.Agency>
+
+@{
+    var agencies = from a in Model
+                      select new { ID = a.ID, Name = a.Name };
+    var selectList = new SelectList(agencies, "ID", "Name");
+}
+
+@Html.DropDownList("AgencyID", selectList, string.Empty)

@@ -1,0 +1,66 @@
+﻿@model Perscribo.EF.Library.Models.Company
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@if (Model.ID == 0)
+{
+    <h2>New Company</h2>
+}
+else
+{
+    <h2>Update Company</h2>
+}
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Company</legend>
+
+        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.AddressID)
+
+        <div class="">
+            Name:
+            <span class="col2">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </span>
+        </div>
+
+        @if (Model.Address != null)
+        {
+            @Html.EditorFor(model => model,"Address")
+        }
+        else
+        {
+            <a href="#" id="showAddress">Add Address</a>
+            <div id="addressControl"></div>
+        }
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<script type="text/javascript">
+    $(function () {
+        $('#showAddress').click(function (e) {
+            e.preventDefault(); 
+            $.get("Address", {},
+                function (data) {
+                    $('#addressControl').html(data);
+                    $('#showAddress').hide();
+                },
+                "html");
+        })
+    });
+</script>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -75,6 +75,24 @@ namespace Perscribo.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult QuickCompanySave()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.QuickCompanySave);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult QuickAgencySave()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.QuickAgencySave);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult QuickConsultantSave()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.QuickConsultantSave);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ApplicationController Actions { get { return MVC.Application; } }
@@ -94,6 +112,9 @@ namespace Perscribo.Controllers
             public readonly string Index = "Index";
             public readonly string Create = "Index";
             public readonly string Edit = "Edit";
+            public readonly string QuickCompanySave = "QuickCompanySave";
+            public readonly string QuickAgencySave = "QuickAgencySave";
+            public readonly string QuickConsultantSave = "QuickConsultantSave";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -102,6 +123,9 @@ namespace Perscribo.Controllers
             public const string Index = "Index";
             public const string Create = "Index";
             public const string Edit = "Edit";
+            public const string QuickCompanySave = "QuickCompanySave";
+            public const string QuickAgencySave = "QuickAgencySave";
+            public const string QuickConsultantSave = "QuickConsultantSave";
         }
 
 
@@ -129,6 +153,31 @@ namespace Perscribo.Controllers
         {
             public readonly string id = "id";
             public readonly string application = "application";
+        }
+        static readonly ActionParamsClass_QuickCompanySave s_params_QuickCompanySave = new ActionParamsClass_QuickCompanySave();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_QuickCompanySave QuickCompanySaveParams { get { return s_params_QuickCompanySave; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_QuickCompanySave
+        {
+            public readonly string newCompanyName = "newCompanyName";
+        }
+        static readonly ActionParamsClass_QuickAgencySave s_params_QuickAgencySave = new ActionParamsClass_QuickAgencySave();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_QuickAgencySave QuickAgencySaveParams { get { return s_params_QuickAgencySave; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_QuickAgencySave
+        {
+            public readonly string newAgencyName = "newAgencyName";
+        }
+        static readonly ActionParamsClass_QuickConsultantSave s_params_QuickConsultantSave = new ActionParamsClass_QuickConsultantSave();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_QuickConsultantSave QuickConsultantSaveParams { get { return s_params_QuickConsultantSave; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_QuickConsultantSave
+        {
+            public readonly string agencyId = "agencyId";
+            public readonly string newConsultantFirstName = "newConsultantFirstName";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -200,6 +249,43 @@ namespace Perscribo.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "application", application);
             EditOverride(callInfo, application);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void QuickCompanySaveOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string newCompanyName);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult QuickCompanySave(string newCompanyName)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.QuickCompanySave);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "newCompanyName", newCompanyName);
+            QuickCompanySaveOverride(callInfo, newCompanyName);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void QuickAgencySaveOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string newAgencyName);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult QuickAgencySave(string newAgencyName)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.QuickAgencySave);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "newAgencyName", newAgencyName);
+            QuickAgencySaveOverride(callInfo, newAgencyName);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void QuickConsultantSaveOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string agencyId, string newConsultantFirstName);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult QuickConsultantSave(string agencyId, string newConsultantFirstName)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.QuickConsultantSave);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "agencyId", agencyId);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "newConsultantFirstName", newConsultantFirstName);
+            QuickConsultantSaveOverride(callInfo, agencyId, newConsultantFirstName);
             return callInfo;
         }
 

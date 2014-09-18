@@ -24,7 +24,6 @@ namespace Perscribo.Controllers
         [HttpGet, OutputCache(NoStore = true, Location = OutputCacheLocation.None)]
         public virtual ActionResult Edit(string id)
         {
-
             if (id == null)
             {
                 var newAgency = new Agency();

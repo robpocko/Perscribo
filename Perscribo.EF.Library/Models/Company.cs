@@ -12,6 +12,8 @@ namespace Perscribo.EF.Library.Models
         [MaxLength(50, ErrorMessage = "Company Name must be no longer than 50 characters")]
         public string Name { get; set; }
 
+        public int? AddressID { get; set; }
+
         public virtual Address Address { get; set; }
         public virtual ICollection<Role> Roles { get; set; }
         public virtual ICollection<Person> People { get; set; }

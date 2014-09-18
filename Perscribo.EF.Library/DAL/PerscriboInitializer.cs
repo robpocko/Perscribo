@@ -372,7 +372,7 @@ namespace Perscribo.EF.Library.DAL
                     HighSalaryRange = 120000,
                     SalaryType = SalaryType.Salary,
                     ReferenceNumber = "12966/AB", 
-                    Status = RoleStatus.Applied_For,
+                    Status = RoleStatus.Closed,
                     Agency = new Agency{
                         Name = "eCareer", 
                         PhoneNumber = "8641 6888", 
@@ -396,7 +396,7 @@ namespace Perscribo.EF.Library.DAL
                     PositionType = PositionType.Permanent, 
                     LowSalaryRange = 140000,
                     SalaryType = SalaryType.Salary,
-                    Status = RoleStatus.Applied_For,
+                    Status = RoleStatus.Closed,
                     Agency = new Agency{
                         Name = "Command Group", 
                         PhoneNumber = "9621 3399", 
@@ -412,6 +412,23 @@ namespace Perscribo.EF.Library.DAL
                             new Consultant{FirstName = "Tamba", LastName = "Sumana", PhoneNumber = "9621 3399"} 
                         }
                     }
+                },
+                new Role
+                {
+                    PositionTitle = "Senior .Net Developer",
+                    AppliedForOn = DateTime.Parse("17 Sep 2014 10:30"), 
+                    PositionType = PositionType.Permanent,
+                    Status = RoleStatus.Applied_For,
+                    Agency = new Agency{ Name = "Brainwave HR" },
+                    Company = new Company { Name = "TransformIT Solutions" }
+                },
+                new Role
+                {
+                    PositionTitle = "Senior Technical Consultant (.Net) Pre-Sales",
+                    AppliedForOn = DateTime.Parse("16 Sep 2014 13:00"),
+                    PositionType = PositionType.Permanent,
+                    Status = RoleStatus.Applied_For,
+                    Agency = new Agency { Name = "Oxford Selection Pty Ltd" }
                 }
             };
             //  need to link consultant to role

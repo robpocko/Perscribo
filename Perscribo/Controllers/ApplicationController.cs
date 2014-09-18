@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.Mvc;
 using Perscribo.EF.Library.DAL;
@@ -24,11 +22,11 @@ namespace Perscribo.Controllers
 
                 Role newRole = new Role();
                 newRole.AppliedForOn = new DateTime(
-                    DateTime.Now.Year, 
-                    DateTime.Now.Month, 
-                    DateTime.Now.Day, 
-                    DateTime.Now.Hour, 
-                    30 * (DateTime.Now.Minute / 30), 
+                    DateTime.Now.Year,
+                    DateTime.Now.Month,
+                    DateTime.Now.Day,
+                    DateTime.Now.Hour,
+                    30 * (DateTime.Now.Minute / 30),
                     0);
 
                 return View("Create", newRole);
@@ -41,9 +39,9 @@ namespace Perscribo.Controllers
                             .OrderByDescending(r => r.Status)
                             .ThenByDescending(r => r.AppliedForOn);
 
-            return View(roles.ToList());
+                return View(roles.ToList());
             }
-            
+
         }
 
         [HttpPost, OutputCache(NoStore = true, Location = OutputCacheLocation.None)]
@@ -101,7 +99,7 @@ namespace Perscribo.Controllers
             return View(application);
         }
 
-        public virtual void QuickCompanySave(string newCompanyName)
+        public virtual ActionResult QuickCompanySave(string newCompanyName)
         {
             if (newCompanyName != null && newCompanyName.Trim().Length > 0)
             {
@@ -114,11 +112,12 @@ namespace Perscribo.Controllers
                 {
                     string temp = ex.Message;
                 }
-
             }
+
+            return RedirectToAction(MVC.PartialViews.ActionNames.Companies, MVC.PartialViews.Name);
         }
 
-        public virtual void QuickAgencySave(string newAgencyName)
+        public virtual ActionResult QuickAgencySave(string newAgencyName)
         {
             if (newAgencyName != null && newAgencyName.Trim().Length > 0)
             {
@@ -131,8 +130,30 @@ namespace Perscribo.Controllers
                 {
                     string temp = ex.Message;
                 }
-
             }
+            return RedirectToAction(MVC.PartialViews.ActionNames.Agencies, MVC.PartialViews.Name);
+        }
+
+        public virtual ActionResult QuickConsultantSave(string agencyId, string newConsultantFirstName)
+        {
+            if (agencyId != null && agencyId.Trim().Length > 0 && 
+                newConsultantFirstName != null && newConsultantFirstName.Trim().Length > 0)
+            {
+                int agencyID = int.Parse(agencyId);
+
+                db.Consultants.Add(new Consultant { FirstName = newConsultantFirstName.Trim(), AgencyID = agencyID });
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    string temp = ex.Message;
+                }
+            }
+
+            return RedirectToAction(MVC.PartialViews.ActionNames.Consultants, MVC.PartialViews.Name, new { id = agencyId });
         }
 
         private void LoadSelectLists(Role role = null)

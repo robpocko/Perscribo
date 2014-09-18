@@ -80,12 +80,16 @@ namespace Perscribo.Controllers
         public class ActionNamesClass
         {
             public readonly string Consultants = "Consultants";
+            public readonly string Agencies = "Agencies";
+            public readonly string Companies = "Companies";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Consultants = "Consultants";
+            public const string Agencies = "Agencies";
+            public const string Companies = "Companies";
         }
 
 
@@ -107,8 +111,12 @@ namespace Perscribo.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _AgenciesDropDown = "_AgenciesDropDown";
+                public readonly string _CompaniesDropDown = "_CompaniesDropDown";
                 public readonly string _ConsultantsDropDown = "_ConsultantsDropDown";
             }
+            public readonly string _AgenciesDropDown = "~/Views/PartialViews/_AgenciesDropDown.cshtml";
+            public readonly string _CompaniesDropDown = "~/Views/PartialViews/_CompaniesDropDown.cshtml";
             public readonly string _ConsultantsDropDown = "~/Views/PartialViews/_ConsultantsDropDown.cshtml";
         }
     }
@@ -127,6 +135,28 @@ namespace Perscribo.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.Consultants);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             ConsultantsOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void AgenciesOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.PartialViewResult Agencies()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.Agencies);
+            AgenciesOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void CompaniesOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.PartialViewResult Companies()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.Companies);
+            CompaniesOverride(callInfo);
             return callInfo;
         }
 

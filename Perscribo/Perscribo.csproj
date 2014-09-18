@@ -145,11 +145,15 @@
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InterviewController.cs" />
     <Compile Include="Controllers\PartialViewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InterviewController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="PartialViewsController.generated.cs">
@@ -222,6 +226,11 @@
     <Content Include="Views\Agency\Consultants.cshtml" />
     <Content Include="Views\Agency\ConsultantEdit.cshtml" />
     <Content Include="Views\Company\Index.cshtml" />
+    <Content Include="Views\PartialViews\_AgenciesDropDown.cshtml" />
+    <Content Include="Views\PartialViews\_CompaniesDropDown.cshtml" />
+    <Content Include="Views\Company\Edit.cshtml" />
+    <Content Include="Views\Interview\Index.cshtml" />
+    <Content Include="Views\Interview\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

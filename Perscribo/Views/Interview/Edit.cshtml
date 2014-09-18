@@ -1,0 +1,36 @@
+﻿@model Perscribo.EF.Library.Models.Company
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Role</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="">
+            @Html.LabelFor(model => model.Name)
+            <span class="col2">
+                @Model.Name
+            </span>
+        </div>
+
+        <div class="">
+            @Html.EditorFor(model => model.Address)
+        </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

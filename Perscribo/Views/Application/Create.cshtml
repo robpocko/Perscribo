@@ -84,7 +84,7 @@
             <fieldset>
                 <legend>New Agency</legend>
                 <div class="">
-                    @Html.LabelFor(model => model.Agency):
+                    @Html.LabelFor(model => model.Agency.Name):
                    <span class="col2">
                        @Html.EditorFor(model => model.Agency.Name)
                        @Html.ValidationMessageFor(model => model.Agency.Name)
@@ -97,10 +97,10 @@
             <fieldset>
                 <legend>New Consultant</legend>
                 <div class="">
-                    @Html.LabelFor(model => model.Consultant):
+                    @Html.LabelFor(model => model.Consultant.FirstName):
                    <span class="col2">
                        @Html.EditorFor(model => model.Consultant.FirstName)
-                       @Html.ValidationMessageFor(model => model.Company.Name)
+                       @Html.ValidationMessageFor(model => model.Consultant.FirstName)
                        <input type="button" value="Save" id="saveConsultant" />
                    </span>
                 </div>
@@ -108,7 +108,7 @@
         </div>
 
         <div class="">
-            @Html.LabelFor(model => model.Company)
+            @Html.LabelFor(model => model.Company.Name)
             <span class="col2">
                 @Html.DropDownList("CompanyID", string.Empty)
                 <a href="#" id="addCompany">Add New Company</a>
@@ -154,6 +154,7 @@
     $(function () {
         $("#Company_Name").prop('disabled', true);
         $("#Agency_Name").prop('disabled', true);
+        $("#Consultant_Name").prop('disabled', true);
 
         $('#AgencyID').change(function () {
             var url = "PartialViews/Consultants/" + $('#AgencyID').val();
@@ -172,9 +173,14 @@
             $("#SubmitButton").prop('disabled', true);
             $('#newAgency').css("display", "inline");
         });
+
         $('#addConsultant').click(function (e) {
-            e.preventDefault();
-            $("#SubmitButton").prop('disabled', true);
+            e.preventDefault(); 
+            if ($('#AgencyID').val() != "") {
+                $('#Consultant_FirstName').prop('disabled', false);
+                $("#SubmitButton").prop('disabled', true);
+                $("#newConsultant").css("display", "inline");
+            }
         });
 
         $('#addCompany').click(function (e) {
@@ -190,7 +196,7 @@
                 url: url,
                 dataType: "html",
                 success: function (data) {
-
+                    $('#AgencyID').html(data);
                 },
                 fail: function () {
                     alert('it did not work');
@@ -202,13 +208,31 @@
             $('#newAgency').css("display", "none");
         });
 
+        $('#saveConsultant').click(function (e) {
+            var url = "Application/QuickConsultantSave/" + $("#AgencyID").val() + "/" + $("#Consultant_FirstName").val();
+            $.ajax({
+                url: url,
+                dataType: "html",
+                success: function (data) {
+                    $('#ConsultantID').html(data);
+                },
+                fail: function () {
+                    alert('it did not work');
+                }
+            });
+
+            $("#Consultant_FirstName").prop('disabled', true);
+            $("#SubmitButton").prop('disabled', false);
+            $('#newConsultant').css("display", "none");
+        });
+
         $('#saveCompany').click(function (e) {
             var url = "Application/QuickCompanySave/" + $("#Company_Name").val();
             $.ajax({
                 url: url,
                 dataType: "html",
                 success: function (data) {
-                    
+                    $('#CompanyID').html(data);
                 },
                 fail: function () {
                     alert('it did not work');

@@ -23,13 +23,13 @@ using System.Web.Routing;
 using T4MVC;
 namespace Perscribo.Controllers
 {
-    public partial class CompanyController
+    public partial class InterviewController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public CompanyController() { }
+        public InterviewController() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected CompanyController(Dummy d) { }
+        protected InterviewController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -57,21 +57,15 @@ namespace Perscribo.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult Edit()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public CompanyController Actions { get { return MVC.Company; } }
+        public InterviewController Actions { get { return MVC.Interview; } }
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Area = "";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Company";
+        public readonly string Name = "Interview";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Company";
+        public const string NameConst = "Interview";
 
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -80,28 +74,15 @@ namespace Perscribo.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
-            public readonly string Edit = "Edit";
-            public readonly string Address = "Address";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
-            public const string Edit = "Edit";
-            public const string Address = "Address";
         }
 
 
-        static readonly ActionParamsClass_Edit s_params_Edit = new ActionParamsClass_Edit();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_Edit EditParams { get { return s_params_Edit; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_Edit
-        {
-            public readonly string id = "id";
-            public readonly string company = "company";
-        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -115,15 +96,15 @@ namespace Perscribo.Controllers
                 public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
             }
-            public readonly string Edit = "~/Views/Company/Edit.cshtml";
-            public readonly string Index = "~/Views/Company/Index.cshtml";
+            public readonly string Edit = "~/Views/Interview/Edit.cshtml";
+            public readonly string Index = "~/Views/Interview/Index.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_CompanyController : Perscribo.Controllers.CompanyController
+    public partial class T4MVC_InterviewController : Perscribo.Controllers.InterviewController
     {
-        public T4MVC_CompanyController() : base(Dummy.Instance) { }
+        public T4MVC_InterviewController() : base(Dummy.Instance) { }
 
         [NonAction]
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
@@ -133,41 +114,6 @@ namespace Perscribo.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string id);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Edit(string id)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            EditOverride(callInfo, id);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Perscribo.EF.Library.Models.Company company);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Edit(Perscribo.EF.Library.Models.Company company)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "company", company);
-            EditOverride(callInfo, company);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void AddressOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Address()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Address);
-            AddressOverride(callInfo);
             return callInfo;
         }
 

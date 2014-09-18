@@ -23,5 +23,19 @@ namespace Perscribo.Controllers
 
             return PartialView("_ConsultantsDropDown", consultants);
         }
+
+        public virtual PartialViewResult Agencies()
+        {
+            List<Agency> agencies = db.Agencies.ToList();
+            
+            return PartialView("_AgenciesDropDown", agencies);
+        }
+
+        public virtual PartialViewResult Companies()
+        {
+            List<Company> companies = db.Companies.ToList();
+
+            return PartialView("_CompaniesDropDown", companies);
+        }
     }
 }

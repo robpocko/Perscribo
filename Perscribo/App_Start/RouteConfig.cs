@@ -23,12 +23,16 @@ namespace Perscribo
                 url: "Application/QuickCompanySave/{newCompanyName}",
                 defaults: new { controller = "Application", action = "QuickCompanySave", newCompanyName = UrlParameter.Optional });
 
-            //routes.MapRoute(
-            //    name: "Consultants",
-            //    url: "PartialViews/Consultants/{id}",
-            //    namespaces: new string[] { "Perscribo.Areas.Applications.Controllers" },
-            //    defaults: new { controller = "PartialViews", action = "Consultants", id = UrlParameter.Optional }
-            //);
+            routes.MapRoute(
+                name: "QuickConsultants",
+                url: "Application/QuickConsultantSave/{agencyId}/{newConsultantFirstName}",
+                defaults: new { 
+                    controller = "Application", 
+                    action = "QuickConsultantSave",
+                    agencyId = UrlParameter.Optional,
+                    newConsultantFirstName = UrlParameter.Optional
+                }
+            );
 
             //routes.MapRoute(
             //    name: "AddressEdit",
